@@ -25,7 +25,7 @@ extension XcodeProj {
     static func read(path: String?) throws -> XcodeProj {
         let resolvedPath: String
         if let path = path {
-            resolvedPath = try Folder.current.file(at: path).path
+            resolvedPath = try Folder.current.subfolder(at: path).path
         } else if let path = Folder.current.firstXcodeProjectPath() {
             resolvedPath = path
         } else {
