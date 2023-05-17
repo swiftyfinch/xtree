@@ -22,9 +22,9 @@ final class Graph {
         self.keys = content.keys.sorted { $0.localizedCompare($1) == .orderedAscending }
         self.arrowsColor = 0xA3A300
         self.colors  = [0xA3A300, 0x964B00]
-        self.pipe = "┃"
-        self.inMiddle = "┣━"
-        self.leaf = "┗━"
+        self.pipe = "│"
+        self.inMiddle = "├──"
+        self.leaf = "└──"
     }
 
     func draw(name: String?,
@@ -49,7 +49,7 @@ final class Graph {
 
         for (index, dependency) in dependencies.enumerated() {
             var prefix = prefix
-            if depth > 0 { prefix += last ? "   " : "\(pipe)  " }
+            if depth > 0 { prefix += last ? "  " : "\(pipe)  " }
             draw(name: dependency,
                  depth: depth + 1,
                  last: index + 1 == dependencies.count,
