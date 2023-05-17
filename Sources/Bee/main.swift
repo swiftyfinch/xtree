@@ -21,7 +21,7 @@ struct Bee: ParsableCommand {
     @Option(name: .shortAndLong, help: "Tree depth.") var depth: Int?
 
     static var configuration = CommandConfiguration(abstract: "🐝 Bee",
-                                                    version: "0.1.0")
+                                                    version: "0.2.0")
 
     func run() throws {
         let project = try XcodeProj.read(path: path)
