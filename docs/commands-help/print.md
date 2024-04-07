@@ -24,4 +24,8 @@
 
 ## Example
 
-<img width="349" src="https://github.com/swiftyfinch/xtree/assets/64660122/115c9d95-b331-4045-aeb7-a651b0203349">
+```sh
+> xtree --input example.yaml
+```
+
+<img width="349" src="https://github.com/swiftyfinch/xtree/assets/64660122/d167fafd-3dc6-41bc-88cb-5319d4ca3636">
