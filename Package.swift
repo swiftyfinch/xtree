@@ -1,26 +1,29 @@
-// swift-tools-version:5.3
-// The swift-tools-version declares the minimum version of Swift required to build this package.
+// swift-tools-version:5.10
 
 import PackageDescription
 
 let package = Package(
-    name: "Bee",
-    platforms: [.macOS(.v11)],
+    name: "xtree",
+    platforms: [.macOS(.v14)],
     products: [
-        .executable(name: "bee", targets: ["Bee"])
+        .executable(name: "xtree", targets: ["XTree"])
     ],
     dependencies: [
-        .package(url: "https://github.com/apple/swift-argument-parser", from: "1.0.1"),
+        .package(url: "https://github.com/apple/swift-argument-parser", from: "1.3.1"),
         .package(url: "https://github.com/onevcat/Rainbow", from: "4.0.1"),
-        .package(url: "https://github.com/JohnSundell/Files", from: "4.2.0"),
-        .package(name: "XcodeProj", url: "https://github.com/tuist/xcodeproj", from: "8.5.0")
+        .package(url: "https://github.com/tuist/XcodeProj", from: "8.20.0"),
+        .package(url: "https://github.com/swiftyfinch/Fish", from: "0.1.2"),
+        .package(url: "https://github.com/jpsim/Yams", from: "5.1.0"),
+        .package(url: "https://github.com/weichsel/ZIPFoundation", from: "0.9.19")
     ],
     targets: [
-        .target(name: "Bee", dependencies: [
+        .executableTarget(name: "XTree", dependencies: [
             .product(name: "ArgumentParser", package: "swift-argument-parser"),
             "Rainbow",
-            "Files",
-            "XcodeProj"
+            "XcodeProj",
+            "Fish",
+            "Yams",
+            "ZIPFoundation"
         ])
     ]
 )

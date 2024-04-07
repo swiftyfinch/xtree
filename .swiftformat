@@ -1,0 +1,12 @@
+# rules
+--commas inline
+--header strip
+
+--enable blankLineAfterImports
+
+--disable wrapMultilineStatementBraces
+--disable redundantType
+--disable andOperator
+--disable redundantInternal
+--disable hoistAwait
+--disable preferForLoop

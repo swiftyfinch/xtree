@@ -3,6 +3,7 @@ disabled_rules:
   - conditional_returns_on_newline
   - todo
   - reduce_boolean
+  - attributes
 
 opt_in_rules:
   - identifier_name
@@ -36,7 +37,6 @@ opt_in_rules:
   - function_parameter_count
   - generic_type_name
   - implicit_getter
-  - inert_defer
   - is_disjoint
   - large_tuple
   - leading_whitespace
@@ -78,7 +78,6 @@ opt_in_rules:
   - type_body_length
   - type_name
   - unneeded_break_in_switch
-  - unused_capture_list
   - unused_closure_parameter
   - unused_control_flow_label
   - unused_enumerated
@@ -91,31 +90,11 @@ opt_in_rules:
   - weak_delegate
   - xctfail_message
   - explicit_init
+  - missing_docs
 
 included:
   - Sources
+  - Tests
 
-large_tuple:
- warning: 3
-
-nesting:
-  type_level: 2
-
-identifier_name:
-  min_length: 1
-
-vertical_whitespace:
-  max_empty_lines: 1
-
-line_length: 120
-function_parameter_count: 5
-
-type_name:
-  max_length: 42 # Increase for testspec
-
-mark:
-  severity: error
-
-cyclomatic_complexity: 12
-
-reporter: "xcode"
+# Custom
+large_tuple: 3
