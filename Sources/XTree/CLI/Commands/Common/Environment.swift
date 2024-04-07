@@ -1,7 +1,7 @@
 import Fish
 
 enum Environment {
-    static let version = "1.0.0"
+    static let version = "1.0.1"
     static let repositoryPath = "swiftyfinch/xtree"
 
     static let cacheFolderPath = Folder.home.subpath(".xtree/cache")
