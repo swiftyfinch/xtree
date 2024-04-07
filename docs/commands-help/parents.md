@@ -11,3 +11,11 @@
 │ --help, -h  │ * Show help information.                                    │
 ╰─────────────┴─────────────────────────────────────────────────────────────╯
 ```
+
+## Example
+
+```sh
+> xtree parents --name Alamofire --input example.yaml
+```
+
+<img width="100" src="https://github.com/swiftyfinch/xtree/assets/64660122/604ebbb7-e20b-4f5e-92d8-cbf689f451bc">
