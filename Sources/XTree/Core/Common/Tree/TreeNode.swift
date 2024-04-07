@@ -36,12 +36,6 @@ extension TreeNode: Hashable {
     }
 }
 
-extension TreeNode: Comparable {
-    static func < (lhs: TreeNode, rhs: TreeNode) -> Bool {
-        lhs.name < rhs.name
-    }
-}
-
 extension [TreeNode] {
     func recursiveChildren() -> Set<TreeNode> {
         Set(flatMap(\.children)).union(self)
