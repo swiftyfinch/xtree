@@ -59,12 +59,15 @@ Right now, it supports the following inputs:
 
 ###### First Install
 
+For simplicity, you don't need to install a package manager.\
+Just run the short script provided below and it will install `xtree` in your `$HOME/.local/bin` directory.
 ```sh
 curl -Ls https://swiftyfinch.github.io/xtree/install.sh | bash
 ```
 
 ###### Self-Update
 
+Please note that the `xtree update` command will also install the latest version in your `$HOME/.local/bin` directory.
 ```sh
 > xtree update
 ```
