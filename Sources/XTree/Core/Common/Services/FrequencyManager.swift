@@ -20,7 +20,7 @@ final class FrequencyManager {
         guard let maxFrequency = frequencies.map(\.value).max() else { return }
         let width = Int(log10f(Float(maxFrequency)).rounded(.up))
         let list = frequencies
-            .sorted { $0.value > $1.value }
+            .sorted { ($0.value, $1.key) > ($1.value, $0.key) }
             .map { String(format: " %\(width)d ", $0.value).secondary + "\($0.key)".accent }
             .joined(separator: "\n")
         Swift.print(list)
