@@ -1,8 +1,8 @@
 <div align="center">
   <br />
   <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="https://github.com/swiftyfinch/xtree-staging/assets/64660122/72ad45fc-6f5b-4601-918a-f720dea97372" width=200>
-    <source media="(prefers-color-scheme: light)" srcset="https://github.com/swiftyfinch/xtree-staging/assets/64660122/cbe39ab2-3ad7-465c-9097-f30ccd52e2cb" width=200>
+    <source media="(prefers-color-scheme: dark)" srcset="https://github.com/swiftyfinch/xtree/assets/64660122/f05e9f11-8876-49bd-90b4-ab8c89ead850" width=200>
+    <source media="(prefers-color-scheme: light)" srcset="https://github.com/swiftyfinch/xtree/assets/64660122/972080ab-e35d-47d9-816d-264aff4770dd" width=200>
     <img src="https://user-images.githubusercontent.com/25423296/163456779-a8556205-d0a5-45e2-ac17-42d089e3c3f8.png">
   </picture>
   <p align="center">
@@ -12,11 +12,8 @@
     <br />
     <img src="https://img.shields.io/badge/Press_★_to_pay_respects-fff?logo=github&logoColor=black" />
   </p>
+  <img src="https://github.com/swiftyfinch/xtree/assets/64660122/3fdef9d7-a211-4834-8382-05620cb368a8" width=400>
 </div>
-
-<p align="center">
-  <img src="https://github.com/swiftyfinch/xtree-staging/assets/64660122/a690f33c-34de-40a2-8ac5-24a9dfb9623f" width=400>
-</p>
 
 # Motivation
 
