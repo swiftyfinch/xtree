@@ -6,8 +6,8 @@
     <img src="https://user-images.githubusercontent.com/25423296/163456779-a8556205-d0a5-45e2-ac17-42d089e3c3f8.png">
   </picture>
   <p align="center">
-    <img src="https://img.shields.io/badge/Platform-macOS-2679eb" />
-    <img src="https://img.shields.io/badge/Swift-5.10-ea5a44" />
+    <a href="https://swiftpackageindex.com/swiftyfinch/xtree"><img src="https://img.shields.io/endpoint?url=https%3A%2F%2Fswiftpackageindex.com%2Fapi%2Fpackages%2Fswiftyfinch%2Fxtree%2Fbadge%3Ftype%3Dplatforms" /></a>
+    <a href="https://swiftpackageindex.com/swiftyfinch/xtree"><img src="https://img.shields.io/endpoint?url=https%3A%2F%2Fswiftpackageindex.com%2Fapi%2Fpackages%2Fswiftyfinch%2Fxtree%2Fbadge%3Ftype%3Dswift-versions" /></a>
     <img src="https://komarev.com/ghpvc/?username=swiftyfinch-xtree&label=Views&format=true&base=0" />
     <br />
     <img src="https://img.shields.io/badge/Press_★_to_pay_respects-fff?logo=github&logoColor=black" />
