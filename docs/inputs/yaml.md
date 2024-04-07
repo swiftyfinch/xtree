@@ -14,7 +14,7 @@
 > xtree --input example.yaml
 ```
 
-<img width="349" src="https://github.com/swiftyfinch/xtree/assets/64660122/75c46871-e72a-461d-9ceb-3cd643749e74">
+<img width="349" src="https://github.com/swiftyfinch/xtree/assets/64660122/d167fafd-3dc6-41bc-88cb-5319d4ca3636">
 
 ```yaml
 # example.yaml
