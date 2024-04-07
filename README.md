@@ -14,8 +14,6 @@
   </p>
 </div>
 
-<h1></h1>
-
 <p align="center">
   <img src="https://github.com/swiftyfinch/xtree-staging/assets/64660122/a690f33c-34de-40a2-8ac5-24a9dfb9623f" width=400>
 </p>
