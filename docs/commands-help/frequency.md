@@ -10,3 +10,11 @@
 │ --help, -h  │ * Show help information.                                    │
 ╰─────────────┴─────────────────────────────────────────────────────────────╯
 ```
+
+## Example
+
+```sh
+> xtree frequency --input example.yaml
+```
+
+<img width="349" src="https://github.com/swiftyfinch/xtree/assets/64660122/405c85cb-8521-4394-b346-e3cdec6f2d9c">
