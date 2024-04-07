@@ -21,3 +21,7 @@
 │ --help, -h        │ * Show help information.                                   │
 ╰───────────────────┴────────────────────────────────────────────────────────────╯
 ```
+
+## Example
+
+<img width="349" src="https://github.com/swiftyfinch/xtree/assets/64660122/115c9d95-b331-4045-aeb7-a651b0203349">
