@@ -9,10 +9,13 @@ final class FrequencyManager {
 
     func print(inputPath: String) async throws {
         let nodesMap = try await inputReader.read(inputPath: inputPath)
-        let frequencies: [String: Int] = nodesMap.values.reduce(into: [:]) { parents, node in
+        var frequencies: [String: Int] = nodesMap.values.reduce(into: [:]) { parents, node in
             node.children.forEach { name in
                 parents[name, default: 0] += 1
             }
+        }
+        nodesMap.keys.forEach { name in
+            frequencies[name, default: 0] += 1
         }
         guard let maxFrequency = frequencies.map(\.value).max() else { return }
         let width = Int(log10f(Float(maxFrequency)).rounded(.up))
