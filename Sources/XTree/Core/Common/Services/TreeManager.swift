@@ -34,6 +34,14 @@ final class TreeManager {
         sort: Sort
     ) async throws {
         let nodesMap = try await inputReader.read(inputPath: inputPath)
+        try print(nodesMap: nodesMap, filter: filter, sort: sort)
+    }
+
+    func print(
+        nodesMap: [String: Node],
+        filter: TreeFilterOptions,
+        sort: Sort
+    ) throws {
         let rootRegexs = try filter.roots.map(regexBuilder.build(wildcardsPattern:))
         let trees = treeBuilder.build(
             from: nodesMap,
