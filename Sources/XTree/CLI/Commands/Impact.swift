@@ -4,7 +4,11 @@ extension XTree {
     struct Impact: AsyncParsableCommand {
         static var configuration = CommandConfiguration(
             commandName: "impact",
-            abstract: "Find affected parent nodes and print them out as a tree."
+            abstract: "Find affected parent nodes and print them out as a tree.",
+            discussion: """
+            \("Each node can contain:".accent)
+            \("╰─ Name".accent) \("height:explicit_children/children".white.secondary) \("info?".tertiary)
+            """
         )
 
         @OptionGroup

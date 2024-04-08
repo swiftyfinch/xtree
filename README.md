@@ -36,19 +36,21 @@ Right now, it supports the following inputs:
 > xtree --help
 
  🌳 Printing and analyzing trees in a handy way.
-╭─────────────┬────────────────────────────────────────────╮
-│ > print     │ * Print a tree with children statistics.   │
-│ > frequency │ * Calculate a frequency of each node.      │
-│ > parents   │ * Find all parents of nodes.               │
-│ > update    │ * Download and install the latest version. │
-│             │                                            │
-│ --version   │ * Show the version.                        │
-│ --help, -h  │ * Show help information.                   │
-╰─────────────┴────────────────────────────────────────────╯
+╭─────────────┬────────────────────────────────────────────────────────────╮
+│ > print     │ * Print a tree with children statistics.                   │
+│ > frequency │ * Calculate a frequency of each node.                      │
+│ > parents   │ * Find all parents of nodes.                               │
+│ > impact    │ * Find affected parent nodes and print them out as a tree. │
+│ > update    │ * Download and install the latest version.                 │
+│             │                                                            │
+│ --version   │ * Show the version.                                        │
+│ --help, -h  │ * Show help information.                                   │
+╰─────────────┴────────────────────────────────────────────────────────────╯
 ```
 - [`print`](docs/commands-help/print.md)
 - [`frequency`](docs/commands-help/frequency.md)
 - [`parents`](docs/commands-help/parents.md)
+- [`impact`](docs/commands-help/impact.md)
 
 <br>
 
