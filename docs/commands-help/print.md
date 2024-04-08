@@ -5,7 +5,7 @@
     Each node can contain:
     ╰─ Name height:explicit_children/children info?
 ╭───────────────────┬────────────────────────────────────────────────────────────╮
-│ --input, -i       │ * (require) The path to the suitable file (*.xcodeproj,    │
+│ --input, -i       │ * (required) The path to the suitable file (*.xcodeproj,   │
 │                   │   Podfile.lock, *.yml/*.yaml), which will be the tree      │
 │                   │   input source.                                            │
 │ --roots, -r []    │ * Keep only subtrees where the root node contains the      │

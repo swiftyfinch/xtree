@@ -5,7 +5,7 @@ struct InputOptions: ParsableCommand {
     @Option(
         name: [.short, .customLong("input")],
         help: """
-        \("(require)".accent) The path to the suitable file (\
+        \("(required)".accent) The path to the suitable file (\
         \("*.xcodeproj".secondary), \
         \("Podfile.lock".secondary), \
         \("*.yml/*.yaml".secondary)\

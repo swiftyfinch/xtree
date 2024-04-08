@@ -3,7 +3,7 @@
 
  🌳 Calculate a frequency of each node.
 ╭─────────────┬─────────────────────────────────────────────────────────────╮
-│ --input, -i │ * (require) The path to the suitable file (*.xcodeproj,     │
+│ --input, -i │ * (required) The path to the suitable file (*.xcodeproj,    │
 │             │   Podfile.lock, *.yml/*.yaml), which will be the tree input │
 │             │   source.                                                   │
 │             │                                                             │

@@ -5,11 +5,11 @@
     Each node can contain:
     ╰─ Name height:explicit_children/children info?
 ╭───────────────────┬────────────────────────────────────────────────────────────╮
-│ --input, -i       │ * (require) The path to the suitable file (*.xcodeproj,    │
+│ --input, -i       │ * (required) The path to the suitable file (*.xcodeproj,   │
 │                   │   Podfile.lock, *.yml/*.yaml), which will be the tree      │
 │                   │   input source.                                            │
-│ --names, -n []    │ * The names of the nodes that will be the leaves of the    │
-│                   │   tree.                                                    │
+│ --names, -n []    │ * (required) The names of the nodes that will be the       │
+│                   │   leaves of the tree.                                      │
 │ --roots, -r []    │ * Keep only subtrees where the root node contains the      │
 │                   │   passed string with wildcards (*, ?).                     │
 │ --contains, -c [] │ * Keep only the nodes that contain the passed strings with │
