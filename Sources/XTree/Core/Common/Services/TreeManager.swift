@@ -1,13 +1,13 @@
 import Fish
 
-final class TreeManager {
-    struct Filter {
-        let roots: [String]
-        let contains: [String]
-        let except: [String]
-        let maxHeight: Int?
-    }
+struct TreeFilterOptions {
+    var roots: [String]
+    var contains: [String]
+    var except: [String]
+    var maxHeight: Int?
+}
 
+final class TreeManager {
     private let inputReader: InputReader
     private let regexBuilder: RegexBuilder
     private let treeBuilder: TreeBuilder
@@ -30,7 +30,7 @@ final class TreeManager {
 
     func print(
         inputPath: String,
-        filter: Filter,
+        filter: TreeFilterOptions,
         sort: Sort
     ) async throws {
         let nodesMap = try await inputReader.read(inputPath: inputPath)
