@@ -25,7 +25,7 @@ extension XTree.Parents {
         var errorDescription: String? {
             switch self {
             case .missingName:
-                return "Please provide the node name to the \("--name".secondary) argument."
+                return "Please provide the node name to the \("-n, --name".secondary) argument."
             }
         }
     }

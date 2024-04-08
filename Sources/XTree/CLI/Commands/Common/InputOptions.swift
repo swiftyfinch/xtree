@@ -31,7 +31,7 @@ extension InputOptions {
         var errorDescription: String? {
             switch self {
             case .emptyInputPath:
-                return "Please provide the path to the \("--input".secondary) argument."
+                return "Please provide the path to the \("-i, --input".secondary) argument."
             }
         }
     }
