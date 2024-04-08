@@ -6,7 +6,7 @@ struct XTree: AsyncParsableCommand {
         commandName: "xtree",
         abstract: "Printing and analyzing trees in a handy way.",
         version: Environment.version,
-        subcommands: [Print.self, Frequency.self, Parents.self, Update.self],
+        subcommands: [Print.self, Frequency.self, Parents.self, Impact.self, Update.self],
         defaultSubcommand: Print.self
     )
 
