@@ -17,7 +17,10 @@ extension XTree {
         @Option(
             name: .shortAndLong,
             parsing: .upToNextOption,
-            help: "\("(required)".accent) The names of the nodes that will be the leaves of the tree."
+            help: """
+            \("(required)".accent) \
+            The names of the nodes with wildcards \("(*, ?)".secondary) that will be the leaves of the tree.
+            """
         )
         var names: [String]
 

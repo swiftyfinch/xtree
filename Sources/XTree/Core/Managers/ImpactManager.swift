@@ -1,10 +1,13 @@
 final class ImpactManager {
     private let inputReader: InputReader
+    private let regexBuilder: RegexBuilder
     private let treeManager: TreeManager
 
     init(inputReader: InputReader,
+         regexBuilder: RegexBuilder,
          treeManager: TreeManager) {
         self.inputReader = inputReader
+        self.regexBuilder = regexBuilder
         self.treeManager = treeManager
     }
 
@@ -15,7 +18,7 @@ final class ImpactManager {
         sort: Sort
     ) async throws {
         let nodesMap = try await inputReader.read(inputPath: inputPath)
-        let affected = findAffectedNodes(by: names, nodesMap: nodesMap)
+        let affected = try findAffectedNodes(by: names, nodesMap: nodesMap)
         if affected.isEmpty { return }
 
         var filter = filter
@@ -26,15 +29,20 @@ final class ImpactManager {
     private func findAffectedNodes(
         by names: [String],
         nodesMap: [String: Node]
-    ) -> Set<String> {
+    ) throws -> Set<String> {
         let parents: [String: [String]] = nodesMap.values.reduce(into: [:]) { parents, node in
             node.children.forEach { name in
                 parents[name, default: []].append(node.name)
             }
         }
 
-        var affected = Set(names)
-        var queue = names
+        let namesRegex = try names.map(regexBuilder.build(wildcardsPattern:))
+        let foundNames = nodesMap.keys.filter { name in
+            namesRegex.contains(where: name.contains)
+        }
+
+        var affected = Set(foundNames)
+        var queue = foundNames
         while !queue.isEmpty {
             let first = queue.removeFirst()
             for node in parents[first] ?? [] {

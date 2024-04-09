@@ -14,8 +14,9 @@ final class Vault {
         treePrinter: treePrinter
     )
     private(set) lazy var impactManager = ImpactManager(
-        inputReader: Vault.shared.inputReader,
-        treeManager: Vault.shared.treeManager
+        inputReader: inputReader,
+        regexBuilder: regexBuilder,
+        treeManager: treeManager
     )
     private(set) lazy var gitHubUpdater = GitHubUpdater(
         repositoryPath: Environment.repositoryPath,

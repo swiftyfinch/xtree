@@ -8,8 +8,8 @@
 │ --input, -i       │ * (required) The path to the suitable file (*.xcodeproj,   │
 │                   │   Podfile.lock, *.yml/*.yaml), which will be the tree      │
 │                   │   input source.                                            │
-│ --names, -n []    │ * (required) The names of the nodes that will be the       │
-│                   │   leaves of the tree.                                      │
+│ --names, -n []    │ * (required) The names of the nodes with wildcards (*, ?)  │
+│                   │   that will be the leaves of the tree.                     │
 │ --roots, -r []    │ * Keep only subtrees where the root node contains the      │
 │                   │   passed string with wildcards (*, ?).                     │
 │ --contains, -c [] │ * Keep only the nodes that contain the passed strings with │
