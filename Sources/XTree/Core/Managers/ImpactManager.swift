@@ -16,6 +16,7 @@ final class ImpactManager {
     ) async throws {
         let nodesMap = try await inputReader.read(inputPath: inputPath)
         let affected = findAffectedNodes(by: names, nodesMap: nodesMap)
+        if affected.isEmpty { return }
 
         var filter = filter
         filter.contains.append(contentsOf: affected)
