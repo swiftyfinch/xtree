@@ -6,7 +6,7 @@ let package = Package(
     name: "xtree",
     platforms: [.macOS(.v13)],
     products: [
-        .executable(name: "xtree", targets: ["XTree"])
+        .executable(name: "xtree", targets: ["CLI"])
     ],
     dependencies: [
         .package(url: "https://github.com/apple/swift-argument-parser", from: "1.3.1"),
@@ -17,13 +17,17 @@ let package = Package(
         .package(url: "https://github.com/weichsel/ZIPFoundation", from: "0.9.19")
     ],
     targets: [
-        .executableTarget(name: "XTree", dependencies: [
+        .executableTarget(name: "CLI", dependencies: [
             .product(name: "ArgumentParser", package: "swift-argument-parser"),
-            "Rainbow",
-            "XcodeProj",
             "Fish",
-            "Yams",
+            "Rainbow",
+            "XTreeKit",
             "ZIPFoundation"
+        ]),
+        .target(name: "XTreeKit", dependencies: [
+            "Fish",
+            "XcodeProj",
+            "Yams"
         ])
     ]
 )
