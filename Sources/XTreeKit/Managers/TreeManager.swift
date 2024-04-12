@@ -1,5 +1,7 @@
 import Fish
 
+// MARK: - Interface
+
 public struct TreeFilterOptions {
     var roots: [String]
     var contains: [String]
@@ -19,7 +21,25 @@ public struct TreeFilterOptions {
     }
 }
 
-public final class TreeManager {
+public protocol ITreeManager: AnyObject {
+    func print(
+        inputPath: String,
+        filter: TreeFilterOptions,
+        sort: Sort
+    ) async throws -> TreeNode
+}
+
+protocol IInternalTreeManager: ITreeManager {
+    func print(
+        nodesMap: [String: Node],
+        filter: TreeFilterOptions,
+        sort: Sort
+    ) throws -> TreeNode
+}
+
+// MARK: - Implementation
+
+final class TreeManager {
     private let inputReader: InputReader
     private let regexBuilder: RegexBuilder
     private let treeBuilder: TreeBuilder
@@ -36,16 +56,11 @@ public final class TreeManager {
         self.treeBuilder = treeBuilder
         self.treeFilter = treeFilter
     }
+}
 
-    public func print(
-        inputPath: String,
-        filter: TreeFilterOptions,
-        sort: Sort
-    ) async throws -> TreeNode {
-        let nodesMap = try await inputReader.read(inputPath: inputPath)
-        return try print(nodesMap: nodesMap, filter: filter, sort: sort)
-    }
+// MARK: - IInternalTreeManager
 
+extension TreeManager: IInternalTreeManager {
     func print(
         nodesMap: [String: Node],
         filter: TreeFilterOptions,
@@ -78,5 +93,18 @@ public final class TreeManager {
                 childrenCount: forest.recursiveChildren().count
             )
         )
+    }
+}
+
+// MARK: - ITreeManager
+
+extension TreeManager: ITreeManager {
+    func print(
+        inputPath: String,
+        filter: TreeFilterOptions,
+        sort: Sort
+    ) async throws -> TreeNode {
+        let nodesMap = try await inputReader.read(inputPath: inputPath)
+        return try print(nodesMap: nodesMap, filter: filter, sort: sort)
     }
 }

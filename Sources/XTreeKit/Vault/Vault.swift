@@ -4,21 +4,19 @@ public final class Vault {
 
     // MARK: - Managers
 
-    public private(set) lazy var frequencyManager = FrequencyManager(inputReader: inputReader)
-    public private(set) lazy var parentsManager = ParentsManager(inputReader: inputReader)
-    public private(set) lazy var treeManager = TreeManager(
+    public private(set) lazy var frequencyManager: IFrequencyManager = FrequencyManager(inputReader: inputReader)
+    public private(set) lazy var parentsManager: IParentsManager = ParentsManager(inputReader: inputReader)
+    public private(set) lazy var treeManager: ITreeManager = internalTreeManager
+    public private(set) lazy var impactManager: IImpactManager = ImpactManager(
         inputReader: inputReader,
         regexBuilder: regexBuilder,
-        treeBuilder: treeBuilder,
-        treeFilter: treeFilter
-    )
-    public private(set) lazy var impactManager = ImpactManager(
-        inputReader: inputReader,
-        regexBuilder: regexBuilder,
-        treeManager: treeManager
+        treeManager: internalTreeManager
     )
 
     // MARK: - Common
+
+    public private(set) lazy var system: ISystem = System()
+    public private(set) lazy var terminal: ITerminal = Terminal()
 
     private(set) lazy var yamlFileManager = YAMLFileManager()
     private(set) lazy var inputCacher = InputCacher(
@@ -36,4 +34,10 @@ public final class Vault {
     private(set) lazy var treeSorter = TreeSorter()
     private(set) lazy var treeBuilder = TreeBuilder(treeSorter: treeSorter)
     private(set) lazy var treeFilter = TreeFilter()
+    private(set) lazy var internalTreeManager: IInternalTreeManager = TreeManager(
+        inputReader: inputReader,
+        regexBuilder: regexBuilder,
+        treeBuilder: treeBuilder,
+        treeFilter: treeFilter
+    )
 }

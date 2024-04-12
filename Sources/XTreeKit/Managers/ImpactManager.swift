@@ -1,29 +1,27 @@
-public final class ImpactManager {
-    private let inputReader: InputReader
-    private let regexBuilder: RegexBuilder
-    private let treeManager: TreeManager
+// MARK: - Interface
 
-    init(inputReader: InputReader,
-         regexBuilder: RegexBuilder,
-         treeManager: TreeManager) {
-        self.inputReader = inputReader
-        self.regexBuilder = regexBuilder
-        self.treeManager = treeManager
-    }
-
-    public func print(
+public protocol IImpactManager: AnyObject {
+    func print(
         inputPath: String,
         names: [String],
         filter: TreeFilterOptions,
         sort: Sort
-    ) async throws -> TreeNode? {
-        let nodesMap = try await inputReader.read(inputPath: inputPath)
-        let affected = try findAffectedNodes(by: names, nodesMap: nodesMap)
-        if affected.isEmpty { return nil }
+    ) async throws -> TreeNode?
+}
 
-        var filter = filter
-        filter.contains.append(contentsOf: affected)
-        return try treeManager.print(nodesMap: nodesMap, filter: filter, sort: sort)
+// MARK: - Implementation
+
+final class ImpactManager {
+    private let inputReader: InputReader
+    private let regexBuilder: RegexBuilder
+    private let treeManager: IInternalTreeManager
+
+    init(inputReader: InputReader,
+         regexBuilder: RegexBuilder,
+         treeManager: IInternalTreeManager) {
+        self.inputReader = inputReader
+        self.regexBuilder = regexBuilder
+        self.treeManager = treeManager
     }
 
     private func findAffectedNodes(
@@ -52,5 +50,24 @@ public final class ImpactManager {
             }
         }
         return affected
+    }
+}
+
+// MARK: - IImpactManager
+
+extension ImpactManager: IImpactManager {
+    func print(
+        inputPath: String,
+        names: [String],
+        filter: TreeFilterOptions,
+        sort: Sort
+    ) async throws -> TreeNode? {
+        let nodesMap = try await inputReader.read(inputPath: inputPath)
+        let affected = try findAffectedNodes(by: names, nodesMap: nodesMap)
+        if affected.isEmpty { return nil }
+
+        var filter = filter
+        filter.contains.append(contentsOf: affected)
+        return try treeManager.print(nodesMap: nodesMap, filter: filter, sort: sort)
     }
 }

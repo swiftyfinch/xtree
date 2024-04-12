@@ -28,7 +28,7 @@ struct XTree: AsyncParsableCommand {
     private static func printHelp() throws -> Bool {
         if CommonFlags.help.isDisjoint(with: CommandLine.arguments) { return false }
         let commandInfo = try HelpDumper().dump(command: XTree.self)
-        HelpPrinter().print(command: commandInfo)
+        HelpPrinter(terminal: Vault.shared.terminal).print(command: commandInfo)
         return true
     }
 }

@@ -1,13 +1,25 @@
 import Foundation
 
-public final class FrequencyManager {
+// MARK: - Interface
+
+public protocol IFrequencyManager: AnyObject {
+    func print(inputPath: String) async throws -> [String: Int]
+}
+
+// MARK: - Implementation
+
+final class FrequencyManager {
     private let inputReader: InputReader
 
     init(inputReader: InputReader) {
         self.inputReader = inputReader
     }
+}
 
-    public func print(inputPath: String) async throws -> [String: Int] {
+// MARK: - IFrequencyManager
+
+extension FrequencyManager: IFrequencyManager {
+    func print(inputPath: String) async throws -> [String: Int] {
         let nodesMap = try await inputReader.read(inputPath: inputPath)
         var frequencies: [String: Int] = nodesMap.values.reduce(into: [:]) { parents, node in
             node.children.forEach { name in

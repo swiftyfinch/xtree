@@ -33,7 +33,8 @@ extension XTree.Update {
             repositoryPath: Environment.repositoryPath,
             downloadsPath: Environment.downloadsPath,
             binName: Environment.binName,
-            binFolderPath: Environment.binFolderPath
+            binFolderPath: Environment.binFolderPath,
+            system: Vault.shared.system
         )
         guard let latestVersion = try await gitHubUpdater.loadLatestVersion() else {
             throw Error.cantFindLatestVersion

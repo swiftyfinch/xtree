@@ -8,6 +8,7 @@ final class GitHubUpdater {
     private let downloadsPath: String
     private let binName: String
     private let binFolderPath: String
+    private let system: ISystem
     private let urlSessionManager = URLSessionManager()
     private let fileManager = FileManager.default
 
@@ -18,17 +19,19 @@ final class GitHubUpdater {
         repositoryPath: String,
         downloadsPath: String,
         binName: String,
-        binFolderPath: String
+        binFolderPath: String,
+        system: ISystem
     ) {
         self.repositoryPath = repositoryPath
         self.downloadsPath = downloadsPath
         self.binName = binName
         self.binFolderPath = binFolderPath
+        self.system = system
     }
 
     // https://docs.github.com/en/repositories/releasing-projects-on-github/linking-to-releases
     func loadLatestVersion() async throws -> String? {
-        let architecture: System.Architecture = .arm64
+        let architecture: MachineArchitecture = .arm64
         let url = baseURL.appending(path: "latest/download/\(architecture.rawValue).zip")
         var request = URLRequest(url: url)
         request.httpMethod = "HEAD"
@@ -40,7 +43,7 @@ final class GitHubUpdater {
     // https://github.com/swiftyfinch/xtree/releases/download/1.0.0/arm64.zip
     // https://github.com/swiftyfinch/xtree/releases/download/1.0.0/x86_64.zip
     func install(version: String) async throws {
-        let architecture = System.architecture()
+        let architecture = system.architecture()
         let url = baseURL.appending(path: "download/\(version)/\(architecture.rawValue).zip")
         let (fileURL, _) = try await urlSessionManager.download(from: url)
 

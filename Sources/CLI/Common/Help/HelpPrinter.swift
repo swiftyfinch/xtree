@@ -6,7 +6,13 @@ private extension Int {
 }
 
 final class HelpPrinter {
-    private let terminalWidth = min(.terminalMaxWidth, Terminal.columns() ?? .terminalMaxWidth)
+    private let terminal: ITerminal
+    private let terminalWidth: Int
+
+    init(terminal: ITerminal) {
+        self.terminal = terminal
+        self.terminalWidth = min(.terminalMaxWidth, terminal.columns() ?? .terminalMaxWidth)
+    }
 
     func print(command: CommandInfoV0) {
         let blocks = [
