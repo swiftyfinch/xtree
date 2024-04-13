@@ -1,7 +1,7 @@
 import Fish
 import Foundation
-import ZIPFoundation
 import XTreeKit
+import ZIPFoundation
 
 final class GitHubUpdater {
     private let repositoryPath: String

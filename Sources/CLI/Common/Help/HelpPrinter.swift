@@ -11,7 +11,7 @@ final class HelpPrinter {
 
     init(terminal: ITerminal) {
         self.terminal = terminal
-        self.terminalWidth = min(.terminalMaxWidth, terminal.columns() ?? .terminalMaxWidth)
+        terminalWidth = min(.terminalMaxWidth, terminal.columns() ?? .terminalMaxWidth)
     }
 
     func print(command: CommandInfoV0) {
