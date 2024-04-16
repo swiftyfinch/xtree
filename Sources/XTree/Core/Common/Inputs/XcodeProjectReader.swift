@@ -44,7 +44,7 @@ final class XcodeProjectReader {
     }
 
     private func subprojectPaths(_ xcodeproj: XcodeProj, projectPath: String) throws -> [String] {
-        let projectFolderPath = URL(fileURLWithPath: projectPath).deletingLastPathComponent().lastPathComponent
+        let projectFolderPath = URL(fileURLWithPath: projectPath).deletingLastPathComponent().path
         return try xcodeproj.pbxproj.fileReferences
             .filter { $0.path?.hasSuffix(.xcodeprojExtension) == true }
             .compactMap { try $0.fullPath(sourceRoot: projectFolderPath) }
