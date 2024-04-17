@@ -5,6 +5,7 @@
     <source media="(prefers-color-scheme: light)" srcset="https://github.com/swiftyfinch/xtree/assets/64660122/972080ab-e35d-47d9-816d-264aff4770dd" width=200>
     <img src="https://user-images.githubusercontent.com/25423296/163456779-a8556205-d0a5-45e2-ac17-42d089e3c3f8.png">
   </picture>
+  <p><code>Printing and analyzing trees in a handy way.</code></p>
   <p align="center">
     <a href="https://swiftpackageindex.com/swiftyfinch/xtree"><img src="https://img.shields.io/endpoint?url=https%3A%2F%2Fswiftpackageindex.com%2Fapi%2Fpackages%2Fswiftyfinch%2Fxtree%2Fbadge%3Ftype%3Dplatforms" /></a>
     <a href="https://swiftpackageindex.com/swiftyfinch/xtree"><img src="https://img.shields.io/endpoint?url=https%3A%2F%2Fswiftpackageindex.com%2Fapi%2Fpackages%2Fswiftyfinch%2Fxtree%2Fbadge%3Ftype%3Dswift-versions" /></a>
