@@ -36,7 +36,8 @@ extension XTree.Print {
                 except: treeOptions.except,
                 maxHeight: treeOptions.maxHeight
             ),
-            sort: treeOptions.sort
+            sort: treeOptions.sort,
+            needsCompress: false
         )
         print(TreePrinter().print(tree))
     }

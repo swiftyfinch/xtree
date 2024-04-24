@@ -25,7 +25,8 @@ public protocol ITreeManager: AnyObject {
     func print(
         inputPath: String,
         filter: TreeFilterOptions,
-        sort: Sort
+        sort: Sort,
+        needsCompress: Bool
     ) async throws -> TreeNode
 }
 
@@ -33,7 +34,8 @@ protocol IInternalTreeManager: ITreeManager {
     func print(
         nodesMap: [String: Node],
         filter: TreeFilterOptions,
-        sort: Sort
+        sort: Sort,
+        needsCompress: Bool
     ) throws -> TreeNode
 }
 
@@ -64,7 +66,8 @@ extension TreeManager: IInternalTreeManager {
     func print(
         nodesMap: [String: Node],
         filter: TreeFilterOptions,
-        sort: Sort
+        sort: Sort,
+        needsCompress: Bool
     ) throws -> TreeNode {
         let rootRegexs = try filter.roots.map(regexBuilder.build(wildcardsPattern:))
         let forest = treeBuilder.build(
@@ -72,7 +75,8 @@ extension TreeManager: IInternalTreeManager {
             roots: nodesMap.keys.filter { name in
                 rootRegexs.isEmpty || rootRegexs.contains(where: name.contains)
             },
-            sort: sort
+            sort: sort,
+            needsCompress: needsCompress
         )
         let filteredForest = try forest.compactMap { tree in
             try treeFilter.filter(
@@ -102,9 +106,10 @@ extension TreeManager: ITreeManager {
     func print(
         inputPath: String,
         filter: TreeFilterOptions,
-        sort: Sort
+        sort: Sort,
+        needsCompress: Bool
     ) async throws -> TreeNode {
         let nodesMap = try await inputReader.read(inputPath: inputPath)
-        return try print(nodesMap: nodesMap, filter: filter, sort: sort)
+        return try print(nodesMap: nodesMap, filter: filter, sort: sort, needsCompress: needsCompress)
     }
 }

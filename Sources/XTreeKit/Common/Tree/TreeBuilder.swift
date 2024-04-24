@@ -14,7 +14,8 @@ final class TreeBuilder {
     func build(
         from nodesMap: [String: Node],
         roots: [String],
-        sort: Sort = .name
+        sort: Sort = .name,
+        needsCompress: Bool
     ) -> [TreeNode] {
         var cache: [String: TreeNode] = [:]
         let forest = roots.compactMap { name in
@@ -23,6 +24,7 @@ final class TreeBuilder {
                 info: nodesMap[name]?.info,
                 nodesMap: nodesMap,
                 sort: sort,
+                needsCompress: needsCompress,
                 cache: &cache
             )
         }
@@ -34,6 +36,7 @@ final class TreeBuilder {
         info: String?,
         nodesMap: [String: Node],
         sort: Sort,
+        needsCompress: Bool,
         cache: inout [String: TreeNode]
     ) -> TreeNode? {
         if let existTreeNode = cache[name] { return existTreeNode }
@@ -46,23 +49,36 @@ final class TreeBuilder {
                     info: child.info,
                     nodesMap: nodesMap,
                     sort: sort,
+                    needsCompress: needsCompress,
                     cache: &cache
                 )
             }
         }
-        let recursiveChildren = childrenNodes.recursiveChildren()
+        let modifiedChildren = needsCompress ? compress(childrenNodes) : childrenNodes
+        let recursiveChildren = modifiedChildren.recursiveChildren()
         let treeNode = TreeNode(
             name: name,
             info: info,
-            explicitChildren: treeSorter.sorted(childrenNodes, type: sort),
+            explicitChildren: treeSorter.sorted(modifiedChildren, type: sort),
             children: recursiveChildren,
             stats: TreeNode.Stats(
-                height: childrenNodes.maxHeight(),
-                explicitChildrenCount: childrenNodes.count,
+                height: modifiedChildren.maxHeight(),
+                explicitChildrenCount: modifiedChildren.count,
                 childrenCount: recursiveChildren.count
             )
         )
         cache[name] = treeNode
         return treeNode
+    }
+
+    private func compress(_ nodes: [TreeNode]) -> [TreeNode] {
+        nodes.filter {
+            for child in nodes where child != $0 {
+                if child.children.contains($0) {
+                    return false
+                }
+            }
+            return true
+        }
     }
 }

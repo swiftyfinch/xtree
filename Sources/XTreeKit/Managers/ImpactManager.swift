@@ -68,6 +68,6 @@ extension ImpactManager: IImpactManager {
 
         var filter = filter
         filter.contains.append(contentsOf: affected)
-        return try treeManager.print(nodesMap: nodesMap, filter: filter, sort: sort)
+        return try treeManager.print(nodesMap: nodesMap, filter: filter, sort: sort, needsCompress: false)
     }
 }
