@@ -34,6 +34,8 @@ final class InputReader {
     private let xcodeProjectReader: XcodeProjectReader
     private let yamlFileManager: YAMLFileManager
 
+    private var cache: (path: String, nodesMap: [String: Node])?
+
     init(xcodeProjectReader: XcodeProjectReader,
          yamlFileManager: YAMLFileManager) {
         self.xcodeProjectReader = xcodeProjectReader
@@ -41,17 +43,24 @@ final class InputReader {
     }
 
     func read(inputPath: String) async throws -> [String: Node] {
+        let nodesMap: [String: Node]
         let resolvedPath = try resolvePath(inputPath)
+        if let cache, cache.path == resolvedPath {
+            return cache.nodesMap
+        }
+
         switch URL(fileURLWithPath: resolvedPath).pathExtension {
         case InputReaderExtensions.xcodeproj:
-            return try await xcodeProjectReader.parseTargets(projectPath: resolvedPath)
+            nodesMap = try await xcodeProjectReader.parseTargets(projectPath: resolvedPath)
         case InputReaderExtensions.yml, InputReaderExtensions.yaml:
-            return try yamlFileManager.parse(path: resolvedPath)
+            nodesMap = try yamlFileManager.parse(path: resolvedPath)
         case InputReaderExtensions.lock:
-            return try PodfileLockReader().parse(path: resolvedPath)
+            nodesMap = try PodfileLockReader().parse(path: resolvedPath)
         default:
             throw Error.unknownInputExtension
         }
+        cache = (resolvedPath, nodesMap)
+        return nodesMap
     }
 
     private func resolvePath(_ path: String) throws -> String {
