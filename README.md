@@ -14,7 +14,7 @@
     <img src="https://img.shields.io/badge/Press_★_to_pay_respects-fff?logo=github&logoColor=black" />
   </p>
   
-  <img src="https://github.com/swiftyfinch/xtree/assets/64660122/d6d65478-b58a-476d-a0df-8032a78ca329" width=700>
+  <img src="https://github.com/swiftyfinch/xtree/assets/64660122/8592bd64-20c8-4080-9d11-8d98c1ab16e7" width=700>
 </div>
 
 # Motivation
@@ -58,7 +58,10 @@ Right now, it supports the following inputs:
 
 # How to install 📦
 
-###### First Install
+- [Terminal CLI](#terminal-cli)
+- [Application (macOS)](#application-macos)
+
+## Terminal CLI
 
 For simplicity, you don't need to install a package manager.\
 Just run the short script provided below and it will install `xtree` in your `$HOME/.local/bin` directory.
@@ -66,9 +69,33 @@ Just run the short script provided below and it will install `xtree` in your `$H
 curl -Ls https://swiftyfinch.github.io/xtree/install.sh | bash
 ```
 
-###### Self-Update
-
-Please note that the `xtree update` command will also install the latest version in your `$HOME/.local/bin` directory.
+If you already have an installed one, you can update it with this command:
 ```sh
-> xtree update
+xtree update
 ```
+
+## Application (macOS)
+
+Use [Homebrew](https://brew.sh) and commands provided below:
+```sh
+brew tap swiftyfinch/xtree https://github.com/swiftyfinch/xtree.git
+brew install --cask xtree --no-quarantine
+```
+
+If you already have an installed one, you can update it with this command:
+```sh
+brew update && brew upgrade --cask xtree
+```
+
+<br>
+
+## 🤝 Contribution
+
+Feel free [to open a pull request](https://github.com/swiftyfinch/xtree/contribute) or a discussion.
+
+## 📮 Support
+
+If you want to support this project, you can do some of these:\
+`1)` <ins><b>Press</b></ins> ⭐️. It's a nice mark which means that it is useful;\
+`2)` <ins><b>Share</b></ins> the project 🌍 somewhere with somebody;\
+`3)` <ins><b>Leave feedback</b></ins> in the discussions 💬 section.
