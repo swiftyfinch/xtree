@@ -2,6 +2,13 @@ import Fish
 import Foundation
 
 struct Node {
+    struct Icon {
+        let sfSymbol: String
+        let primaryColor: UInt
+        let secondaryColor: UInt?
+    }
+
+    let icon: Icon?
     let name: String
     let info: String?
     let children: [String]

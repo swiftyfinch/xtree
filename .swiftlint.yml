@@ -5,6 +5,8 @@ disabled_rules:
   - reduce_boolean
   - attributes
   - for_where
+  - nesting
+  - function_parameter_count
 
 opt_in_rules:
   - identifier_name
@@ -48,7 +50,6 @@ opt_in_rules:
   - line_length
   - mark
   - multiple_closures_with_trailing_closure
-  - nesting
   - no_fallthrough_only
   - no_space_in_method_call
   - notification_center_detachment
@@ -97,4 +98,3 @@ included:
 
 # Custom
 large_tuple: 3
-function_parameter_count: 6

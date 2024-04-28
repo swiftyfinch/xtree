@@ -87,6 +87,7 @@ extension TreeManager: IInternalTreeManager {
             )
         }
         return TreeNode(
+            icon: nil,
             name: ".",
             info: nil,
             explicitChildren: filteredForest,

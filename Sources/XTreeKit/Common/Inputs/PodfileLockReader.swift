@@ -32,20 +32,20 @@ final class PodfileLockReader {
             throw Error.incorrectPodfileFormat
         }
 
+        let specRepos = yaml[.specRepos] as? [String: [String]] ?? [:]
+        let checkoutOptions = yaml[.checkoutOptions] as? [String: [String: Any]] ?? [:]
+        let remotePodNames = Set(specRepos.flatMap(\.value) + checkoutOptions.keys)
+
         var pods: [String: Node] = [:]
         for value in podsNode {
             switch value {
             case let string as String:
-                let (name, version) = parsePod(string)
-                pods[name] = Node(name: name, info: version, children: [])
+                let node = makeNode(string, children: [], remotePodNames: remotePodNames)
+                pods[node.name] = node
             case let dictionary as [String: [String]]:
                 for (string, array) in dictionary {
-                    let (name, version) = parsePod(string)
-                    pods[name] = Node(
-                        name: name,
-                        info: version,
-                        children: array.map { parsePod($0).name }
-                    )
+                    let node = makeNode(string, children: array, remotePodNames: remotePodNames)
+                    pods[node.name] = node
                 }
             default:
                 throw Error.incorrectPodsNodeFormat
@@ -60,8 +60,34 @@ final class PodfileLockReader {
         let version = components.count == 2 ? String(components[1].dropLast()) : nil
         return (name, version)
     }
+
+    private func makeNode(_ line: String, children: [String], remotePodNames: Set<String>) -> Node {
+        let (name, version) = parsePod(line)
+        let isPodRemote = isPodRemote(name: name, remotePodNames: remotePodNames)
+        return Node(
+            icon: makeIcon(isRemotePod: isPodRemote),
+            name: name,
+            info: version,
+            children: children.map { parsePod($0).name }
+        )
+    }
+
+    private func isPodRemote(name: String, remotePodNames: Set<String>) -> Bool {
+        let baseName = name.components(separatedBy: "/")[0]
+        return remotePodNames.contains(baseName)
+    }
+
+    private func makeIcon(isRemotePod: Bool) -> Node.Icon {
+        .init(
+            sfSymbol: isRemotePod ? "shippingbox.fill" : "folder.fill",
+            primaryColor: isRemotePod ? 0xBD923E : 0x666666,
+            secondaryColor: nil
+        )
+    }
 }
 
 private extension String {
     static let podsNode = "PODS"
+    static let specRepos = "SPEC REPOS"
+    static let checkoutOptions = "CHECKOUT OPTIONS"
 }

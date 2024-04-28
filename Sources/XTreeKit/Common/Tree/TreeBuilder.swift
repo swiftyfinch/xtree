@@ -20,6 +20,7 @@ final class TreeBuilder {
         var cache: [String: TreeNode] = [:]
         let forest = roots.compactMap { name in
             build(
+                icon: nodesMap[name]?.icon,
                 name: name,
                 info: nodesMap[name]?.info,
                 nodesMap: nodesMap,
@@ -32,6 +33,7 @@ final class TreeBuilder {
     }
 
     private func build(
+        icon: Node.Icon?,
         name: String,
         info: String?,
         nodesMap: [String: Node],
@@ -45,6 +47,7 @@ final class TreeBuilder {
         let childrenNodes: [TreeNode] = node.children.compactMap { name in
             nodesMap[name].flatMap { child in
                 build(
+                    icon: child.icon,
                     name: child.name,
                     info: child.info,
                     nodesMap: nodesMap,
@@ -57,6 +60,11 @@ final class TreeBuilder {
         let modifiedChildren = needsCompress ? compress(childrenNodes) : childrenNodes
         let recursiveChildren = modifiedChildren.recursiveChildren()
         let treeNode = TreeNode(
+            icon: icon.map {
+                .init(sfSymbol: $0.sfSymbol,
+                      primaryColor: $0.primaryColor,
+                      secondaryColor: $0.secondaryColor)
+            },
             name: name,
             info: info,
             explicitChildren: treeSorter.sorted(modifiedChildren, type: sort),

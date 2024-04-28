@@ -21,6 +21,7 @@ final class TreeFilter {
             )
         }
         return TreeNode(
+            icon: tree.icon,
             name: tree.name,
             info: tree.info,
             explicitChildren: filteredExplicitChildren,

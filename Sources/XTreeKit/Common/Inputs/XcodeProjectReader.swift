@@ -36,6 +36,7 @@ final class XcodeProjectReader {
         guard let rootProject = try xcodeproj.pbxproj.rootProject() else { return }
         rootProject.targets.forEach {
             nodesMap[$0.name] = Node(
+                icon: makeIcon(pbxTarget: $0),
                 name: $0.name,
                 info: nil,
                 children: $0.dependencies.compactMap(\.displayName)
@@ -48,6 +49,21 @@ final class XcodeProjectReader {
         return try xcodeproj.pbxproj.fileReferences
             .filter { $0.path?.hasSuffix(.xcodeprojExtension) == true }
             .compactMap { try $0.fullPath(sourceRoot: projectFolderPath) }
+    }
+
+    private func makeIcon(pbxTarget: PBXTarget) -> Node.Icon? {
+        if pbxTarget is PBXAggregateTarget {
+            return .init(sfSymbol: "target", primaryColor: 0xCA6854, secondaryColor: nil)
+        } else if pbxTarget.productType == .framework {
+            return .init(sfSymbol: "latch.2.case.fill", primaryColor: 0xBD923E, secondaryColor: nil)
+        } else if pbxTarget.productType == .bundle {
+            return .init(sfSymbol: "batteryblock.fill", primaryColor: 0x6EB5DC, secondaryColor: nil)
+        } else if pbxTarget.productType == .uiTestBundle || pbxTarget.productType == .unitTestBundle {
+            return .init(sfSymbol: "checkmark.diamond.fill", primaryColor: 0xFFFFFF, secondaryColor: 0x57AB59)
+        } else if pbxTarget.productType == .application {
+            return .init(sfSymbol: "app.fill", primaryColor: 0xADBAC7, secondaryColor: nil)
+        }
+        return nil
     }
 }
 
