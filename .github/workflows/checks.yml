@@ -1,11 +1,6 @@
 name: Checks
 
-on:
-  workflow_dispatch:
-  pull_request:
-  push:
-    branches: [main]
-    paths-ignore: ['README.md', 'docs/**']
+on: [workflow_dispatch, pull_request]
 
 jobs:
   swiftformat:
@@ -24,7 +19,7 @@ jobs:
       run: brew install swiftlint
     - run: swiftlint --strict --quiet --reporter github-actions-logging
 
-  release:
+  cli:
     name: Build Binary
     runs-on: macos-14
     steps:
@@ -38,3 +33,29 @@ jobs:
       run: sudo xcode-select -s '/Applications/Xcode_15.3.app'
     - name: Build
       run: swift build -c release
+
+  app:
+    name: Build App
+    runs-on: macos-14
+    steps:
+    - uses: actions/checkout@v4
+    - name: Select Xcode 15.3
+      run: sudo xcode-select -s '/Applications/Xcode_15.3.app'
+    - run: brew install xcbeautify
+    - name: Build
+      run: |
+        xcodebuild \
+          -workspace XTree.xcworkspace \
+          -scheme XTree \
+          -configuration Release \
+          -sdk macosx \
+          -arch arm64 \
+          -derivedDataPath build \
+          -clonedSourcePackagesDirPath "$HOME/Library/Developer/Xcode/DerivedData/XTree" \
+          | xcbeautify
+    - uses: actions/upload-artifact@v3
+      with:
+        name: XTree
+        path: build/Build/Products/Release/XTree.app
+        if-no-files-found: error
+        retention-days: 1

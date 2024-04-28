@@ -11,6 +11,11 @@ on:
         - minor
         - major
 
+env:
+  CLI_VERSION_FILE: Sources/XTreeKit/Common/Environment.swift
+  APP_XCCONFIG_FILE: XTree/XTree/Project.xcconfig
+  HOMEBREW_CASK_FILE: Casks/xtree.rb
+
 permissions:
   contents: write
   discussions: write
@@ -24,28 +29,39 @@ jobs:
         with:
           token: ${{ secrets.CUSTOM_GITHUB_TOKEN }}
 
-      # Update version in all files and commit
-      - name: Bump and Git Commit
-        run: |
-          git config user.name "swiftyfinch"
-          git config user.email "swiftyfinch@yandex.com"
-          BUMP_TYPE=${{ github.event.inputs.bump-type }}
-          NEW_VERSION=`ruby .github/scripts/bump.rb $BUMP_TYPE`
-          echo "NEW_VERSION=$NEW_VERSION" >> $GITHUB_ENV
-          echo "[$BUMP_TYPE] → $NEW_VERSION"
-
       - name: Select Xcode 15.3
         run: sudo xcode-select -s '/Applications/Xcode_15.3.app'
-      - name: Build Release
-        run: make release
+      - run: brew install xcbeautify
 
-      - name: Git Push
-        run: git push origin
+      # Update version in all files and commit
+      - name: Bump
+        run: |
+          NEW_VERSION=`ruby .github/scripts/bump.rb ${{ github.event.inputs.bump-type }}`
+          echo "NEW_VERSION=$NEW_VERSION" >> $GITHUB_ENV
+
+      - name: Build Release
+        run: |
+          make release
+          make release-app
+
+      # Update sha, commit, add tag and push
+      - run: |
+          git config user.name "GitHub Actions"
+          git config user.email "swiftyfinch@yandex.com"
+          ruby .github/scripts/update_sha.rb Release/XTree.zip
+
+      - name: Git Commit and push
+        run: |
+          git commit --include ${{ env.CLI_VERSION_FILE }} \
+            --include ${{ env.APP_XCCONFIG_FILE }} \
+            --include ${{ env.HOMEBREW_CASK_FILE }} \
+            --message "[skip ci] Bump version ${{ env.NEW_VERSION }}"
+          git push origin
 
       - name: Release Draft
         uses: softprops/action-gh-release@v2.0.2
         with:
-          name: 🌳 xtree ${{ env.NEW_VERSION }}
+          name: 🌳 v${{ env.NEW_VERSION }}
           draft: true
           generate_release_notes: true
           discussion_category_name: Releases
