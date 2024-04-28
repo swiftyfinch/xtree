@@ -41,7 +41,7 @@ jobs:
 
       - name: Build Release
         run: |
-          make release
+          make release-cli
           make release-app
 
       # Update sha, commit, add tag and push
