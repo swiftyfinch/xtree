@@ -8,14 +8,13 @@ lint:
 	swiftlint --fix --quiet
 	swiftlint --strict --quiet
 
-.PHONY: install
+.PHONY: install-cli
 install:
 	swift build --arch arm64 -c release
 	cp -f `swift build --arch arm64 -c release --show-bin-path`/xtree ~/.local/bin/xtree
 
-.PHONY: release
-release:
-	rm -rf Release
+.PHONY: release-cli
+release-cli:
 	mkdir -p Release
 
 	swift package clean
@@ -32,3 +31,22 @@ release:
 	strip -rSTx Release/xtree
 	cd Release && zip -r arm64.zip xtree
 	cd Release && mv xtree xtree-arm64
+
+.PHONY: release-app
+release-app:
+	rm -rf Release/build
+	rm -rf Release/XTree.app
+	rm -rf Release/XTree.zip
+	mkdir -p Release
+
+	xcodebuild \
+	  -workspace XTree.xcworkspace \
+	  -scheme XTree \
+	  -configuration Release \
+	  -sdk macosx \
+	  -arch arm64 \
+	  -derivedDataPath Release/build \
+	  -clonedSourcePackagesDirPath "${HOME}/Library/Developer/Xcode/DerivedData/XTree" \
+	  | xcbeautify
+	mv Release/build/Build/Products/Release/XTree.app Release/XTree.app
+	cd Release && zip -r XTree.zip XTree.app

@@ -1,0 +1,496 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		2344E6F92BD4FEFB00E36A06 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2344E6F82BD4FEFB00E36A06 /* MainView.swift */; };
+		2344E6FC2BD572A900E36A06 /* FilterTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2344E6FB2BD572A900E36A06 /* FilterTextField.swift */; };
+		238BE9A32BCC4C5D00DCFBEA /* DesignSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 238BE9A22BCC4C5D00DCFBEA /* DesignSystem.swift */; };
+		238BE9A72BCC4F5700DCFBEA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 238BE9A42BCC4EE300DCFBEA /* AppDelegate.swift */; };
+		238BE9A92BCD926100DCFBEA /* XTreeKit in Frameworks */ = {isa = PBXBuildFile; productRef = 238BE9A82BCD926100DCFBEA /* XTreeKit */; };
+		238BE9BC2BCEE0D900DCFBEA /* DragAndDropView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 238BE9BB2BCEE0D900DCFBEA /* DragAndDropView.swift */; };
+		238BE9BF2BCEE10000DCFBEA /* TreeViewModelBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 238BE9BE2BCEE10000DCFBEA /* TreeViewModelBuilder.swift */; };
+		238BE9C42BCEE1C100DCFBEA /* TreeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 238BE9C32BCEE1C100DCFBEA /* TreeView.swift */; };
+		238BE9C62BCEE27900DCFBEA /* TreeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 238BE9C52BCEE27900DCFBEA /* TreeViewController.swift */; };
+		238BE9CB2BCEE76F00DCFBEA /* NSColor+Hex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 238BE9CA2BCEE76F00DCFBEA /* NSColor+Hex.swift */; };
+		238BE9CF2BCEE7CE00DCFBEA /* TreeRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 238BE9CE2BCEE7CE00DCFBEA /* TreeRowView.swift */; };
+		238BE9D12BCEE84200DCFBEA /* TreeRowTitleFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 238BE9D02BCEE84200DCFBEA /* TreeRowTitleFormatter.swift */; };
+		238C80672BC9A7C600E515A8 /* XTreeApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 238C80662BC9A7C600E515A8 /* XTreeApp.swift */; };
+		238C806B2BC9A7C700E515A8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 238C806A2BC9A7C700E515A8 /* Assets.xcassets */; };
+		238C806E2BC9A7C700E515A8 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 238C806D2BC9A7C700E515A8 /* Preview Assets.xcassets */; };
+		23F1D2F42BD964D000C03134 /* SelectionTreeRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23F1D2F32BD964D000C03134 /* SelectionTreeRowView.swift */; };
+		23F1D2FB2BD972E300C03134 /* FiltersView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23F1D2FA2BD972E300C03134 /* FiltersView.swift */; };
+		23F1D2FF2BD97CB700C03134 /* TreeBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23F1D2FE2BD97CB700C03134 /* TreeBuilder.swift */; };
+		23F1D3012BD97F0B00C03134 /* UserDefaultsStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23F1D3002BD97F0B00C03134 /* UserDefaultsStorage.swift */; };
+		23F1D3032BD980B000C03134 /* Vault.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23F1D3022BD980B000C03134 /* Vault.swift */; };
+		23F1D3052BD9840000C03134 /* ToolBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23F1D3042BD9840000C03134 /* ToolBarView.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		231FADF22BDE97B100EE6E3D /* Project.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = Project.xcconfig; sourceTree = "<group>"; };
+		2344E6F82BD4FEFB00E36A06 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
+		2344E6FB2BD572A900E36A06 /* FilterTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterTextField.swift; sourceTree = "<group>"; };
+		238BE9A22BCC4C5D00DCFBEA /* DesignSystem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DesignSystem.swift; sourceTree = "<group>"; };
+		238BE9A42BCC4EE300DCFBEA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		238BE9BB2BCEE0D900DCFBEA /* DragAndDropView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DragAndDropView.swift; sourceTree = "<group>"; };
+		238BE9BE2BCEE10000DCFBEA /* TreeViewModelBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TreeViewModelBuilder.swift; sourceTree = "<group>"; };
+		238BE9C32BCEE1C100DCFBEA /* TreeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TreeView.swift; sourceTree = "<group>"; };
+		238BE9C52BCEE27900DCFBEA /* TreeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TreeViewController.swift; sourceTree = "<group>"; };
+		238BE9CA2BCEE76F00DCFBEA /* NSColor+Hex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSColor+Hex.swift"; sourceTree = "<group>"; };
+		238BE9CE2BCEE7CE00DCFBEA /* TreeRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TreeRowView.swift; sourceTree = "<group>"; };
+		238BE9D02BCEE84200DCFBEA /* TreeRowTitleFormatter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TreeRowTitleFormatter.swift; sourceTree = "<group>"; };
+		238C80632BC9A7C600E515A8 /* XTree.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = XTree.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		238C80662BC9A7C600E515A8 /* XTreeApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XTreeApp.swift; sourceTree = "<group>"; };
+		238C806A2BC9A7C700E515A8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		238C806D2BC9A7C700E515A8 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		238C806F2BC9A7C700E515A8 /* XTree.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = XTree.entitlements; sourceTree = "<group>"; };
+		23F1D2F32BD964D000C03134 /* SelectionTreeRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectionTreeRowView.swift; sourceTree = "<group>"; };
+		23F1D2FA2BD972E300C03134 /* FiltersView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FiltersView.swift; sourceTree = "<group>"; };
+		23F1D2FE2BD97CB700C03134 /* TreeBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TreeBuilder.swift; sourceTree = "<group>"; };
+		23F1D3002BD97F0B00C03134 /* UserDefaultsStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsStorage.swift; sourceTree = "<group>"; };
+		23F1D3022BD980B000C03134 /* Vault.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Vault.swift; sourceTree = "<group>"; };
+		23F1D3042BD9840000C03134 /* ToolBarView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ToolBarView.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		238C80602BC9A7C600E515A8 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				238BE9A92BCD926100DCFBEA /* XTreeKit in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		2344E6F72BD4FEEE00E36A06 /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				2344E6F82BD4FEFB00E36A06 /* MainView.swift */,
+				238BE9BB2BCEE0D900DCFBEA /* DragAndDropView.swift */,
+				23F1D2FA2BD972E300C03134 /* FiltersView.swift */,
+				23F1D3042BD9840000C03134 /* ToolBarView.swift */,
+			);
+			path = Main;
+			sourceTree = "<group>";
+		};
+		2344E6FA2BD572A100E36A06 /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				2344E6FB2BD572A900E36A06 /* FilterTextField.swift */,
+			);
+			path = UI;
+			sourceTree = "<group>";
+		};
+		238BE9A12BCC4C3F00DCFBEA /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				23F1D3062BD9841D00C03134 /* Services */,
+				2344E6FA2BD572A100E36A06 /* UI */,
+				238BE9C92BCEE76100DCFBEA /* Extensions */,
+				238BE9A22BCC4C5D00DCFBEA /* DesignSystem.swift */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
+		238BE9A62BCC4EFC00DCFBEA /* App */ = {
+			isa = PBXGroup;
+			children = (
+				238C80662BC9A7C600E515A8 /* XTreeApp.swift */,
+				238BE9A42BCC4EE300DCFBEA /* AppDelegate.swift */,
+				23F1D3022BD980B000C03134 /* Vault.swift */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		238BE9C02BCEE1A400DCFBEA /* TreeView */ = {
+			isa = PBXGroup;
+			children = (
+				23F1D2FE2BD97CB700C03134 /* TreeBuilder.swift */,
+				238BE9BE2BCEE10000DCFBEA /* TreeViewModelBuilder.swift */,
+				238BE9D02BCEE84200DCFBEA /* TreeRowTitleFormatter.swift */,
+				238BE9C32BCEE1C100DCFBEA /* TreeView.swift */,
+				238BE9C52BCEE27900DCFBEA /* TreeViewController.swift */,
+				238BE9CE2BCEE7CE00DCFBEA /* TreeRowView.swift */,
+				23F1D2F32BD964D000C03134 /* SelectionTreeRowView.swift */,
+			);
+			path = TreeView;
+			sourceTree = "<group>";
+		};
+		238BE9C92BCEE76100DCFBEA /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				238BE9CA2BCEE76F00DCFBEA /* NSColor+Hex.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		238BE9D22BCEE86E00DCFBEA /* Modules */ = {
+			isa = PBXGroup;
+			children = (
+				2344E6F72BD4FEEE00E36A06 /* Main */,
+				238BE9C02BCEE1A400DCFBEA /* TreeView */,
+			);
+			path = Modules;
+			sourceTree = "<group>";
+		};
+		238C805A2BC9A7C600E515A8 = {
+			isa = PBXGroup;
+			children = (
+				238C80652BC9A7C600E515A8 /* XTree */,
+				238C80642BC9A7C600E515A8 /* Products */,
+				238C807A2BC9A95300E515A8 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		238C80642BC9A7C600E515A8 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				238C80632BC9A7C600E515A8 /* XTree.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		238C80652BC9A7C600E515A8 /* XTree */ = {
+			isa = PBXGroup;
+			children = (
+				238BE9D22BCEE86E00DCFBEA /* Modules */,
+				238BE9A62BCC4EFC00DCFBEA /* App */,
+				238BE9A12BCC4C3F00DCFBEA /* Common */,
+				238C806A2BC9A7C700E515A8 /* Assets.xcassets */,
+				231FADF22BDE97B100EE6E3D /* Project.xcconfig */,
+				238C806F2BC9A7C700E515A8 /* XTree.entitlements */,
+				238C806C2BC9A7C700E515A8 /* Preview Content */,
+			);
+			path = XTree;
+			sourceTree = "<group>";
+		};
+		238C806C2BC9A7C700E515A8 /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				238C806D2BC9A7C700E515A8 /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		238C807A2BC9A95300E515A8 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		23F1D3062BD9841D00C03134 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				23F1D3002BD97F0B00C03134 /* UserDefaultsStorage.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		238C80622BC9A7C600E515A8 /* XTree */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 238C80722BC9A7C700E515A8 /* Build configuration list for PBXNativeTarget "XTree" */;
+			buildPhases = (
+				238C805F2BC9A7C600E515A8 /* Sources */,
+				238C80602BC9A7C600E515A8 /* Frameworks */,
+				238C80612BC9A7C600E515A8 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = XTree;
+			packageProductDependencies = (
+				238BE9A82BCD926100DCFBEA /* XTreeKit */,
+			);
+			productName = XTree;
+			productReference = 238C80632BC9A7C600E515A8 /* XTree.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		238C805B2BC9A7C600E515A8 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1530;
+				LastUpgradeCheck = 1530;
+				TargetAttributes = {
+					238C80622BC9A7C600E515A8 = {
+						CreatedOnToolsVersion = 15.3;
+					};
+				};
+			};
+			buildConfigurationList = 238C805E2BC9A7C600E515A8 /* Build configuration list for PBXProject "XTree" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 238C805A2BC9A7C600E515A8;
+			packageReferences = (
+			);
+			productRefGroup = 238C80642BC9A7C600E515A8 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				238C80622BC9A7C600E515A8 /* XTree */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		238C80612BC9A7C600E515A8 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				238C806E2BC9A7C700E515A8 /* Preview Assets.xcassets in Resources */,
+				238C806B2BC9A7C700E515A8 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		238C805F2BC9A7C600E515A8 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				23F1D3052BD9840000C03134 /* ToolBarView.swift in Sources */,
+				23F1D2FB2BD972E300C03134 /* FiltersView.swift in Sources */,
+				23F1D2FF2BD97CB700C03134 /* TreeBuilder.swift in Sources */,
+				238BE9D12BCEE84200DCFBEA /* TreeRowTitleFormatter.swift in Sources */,
+				2344E6F92BD4FEFB00E36A06 /* MainView.swift in Sources */,
+				238BE9A32BCC4C5D00DCFBEA /* DesignSystem.swift in Sources */,
+				238BE9BF2BCEE10000DCFBEA /* TreeViewModelBuilder.swift in Sources */,
+				238BE9C62BCEE27900DCFBEA /* TreeViewController.swift in Sources */,
+				238BE9CB2BCEE76F00DCFBEA /* NSColor+Hex.swift in Sources */,
+				2344E6FC2BD572A900E36A06 /* FilterTextField.swift in Sources */,
+				238BE9BC2BCEE0D900DCFBEA /* DragAndDropView.swift in Sources */,
+				23F1D3012BD97F0B00C03134 /* UserDefaultsStorage.swift in Sources */,
+				238BE9C42BCEE1C100DCFBEA /* TreeView.swift in Sources */,
+				23F1D3032BD980B000C03134 /* Vault.swift in Sources */,
+				238BE9A72BCC4F5700DCFBEA /* AppDelegate.swift in Sources */,
+				238C80672BC9A7C600E515A8 /* XTreeApp.swift in Sources */,
+				23F1D2F42BD964D000C03134 /* SelectionTreeRowView.swift in Sources */,
+				238BE9CF2BCEE7CE00DCFBEA /* TreeRowView.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		238C80702BC9A7C700E515A8 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MACOSX_DEPLOYMENT_TARGET = 14.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		238C80712BC9A7C700E515A8 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MACOSX_DEPLOYMENT_TARGET = 14.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = macosx;
+				SWIFT_COMPILATION_MODE = wholemodule;
+			};
+			name = Release;
+		};
+		238C80732BC9A7C700E515A8 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 231FADF22BDE97B100EE6E3D /* Project.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = XTree/XTree.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEPLOYMENT_POSTPROCESSING = YES;
+				DEVELOPMENT_ASSET_PATHS = "\"XTree/Preview Content\"";
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = none.XTree;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRIPFLAGS = "-rSTx";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		238C80742BC9A7C700E515A8 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 231FADF22BDE97B100EE6E3D /* Project.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = XTree/XTree.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEPLOYMENT_POSTPROCESSING = YES;
+				DEVELOPMENT_ASSET_PATHS = "\"XTree/Preview Content\"";
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = none.XTree;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRIPFLAGS = "-rSTx";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		238C805E2BC9A7C600E515A8 /* Build configuration list for PBXProject "XTree" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				238C80702BC9A7C700E515A8 /* Debug */,
+				238C80712BC9A7C700E515A8 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		238C80722BC9A7C700E515A8 /* Build configuration list for PBXNativeTarget "XTree" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				238C80732BC9A7C700E515A8 /* Debug */,
+				238C80742BC9A7C700E515A8 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		238BE9A82BCD926100DCFBEA /* XTreeKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = XTreeKit;
+		};
+/* End XCSwiftPackageProductDependency section */
+	};
+	rootObject = 238C805B2BC9A7C600E515A8 /* Project object */;
+}

@@ -6,7 +6,8 @@ let package = Package(
     name: "xtree",
     platforms: [.macOS(.v13)],
     products: [
-        .executable(name: "xtree", targets: ["CLI"])
+        .executable(name: "xtree", targets: ["CLI"]),
+        .library(name: "XTreeKit", targets: ["XTreeKit"])
     ],
     dependencies: [
         .package(url: "https://github.com/apple/swift-argument-parser", from: "1.3.1"),
