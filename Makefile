@@ -43,8 +43,7 @@ release-app:
 	  -workspace XTree.xcworkspace \
 	  -scheme XTree \
 	  -configuration Release \
-	  -sdk macosx \
-	  -arch arm64 \
+	  -destination 'generic/platform=macOS' \
 	  -derivedDataPath Release/build \
 	  -clonedSourcePackagesDirPath "${HOME}/Library/Developer/Xcode/DerivedData/XTree" \
 	  | xcbeautify
