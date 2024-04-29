@@ -2,23 +2,30 @@ import Foundation
 import XcodeProj
 
 final class XcodeProjectReader {
-    private let inputCacher: InputCacher
+    private let inputCacher: InputFileCacher
+    private let inputInMemoryCacher: InputInMemoryCacher
 
-    init(inputCacher: InputCacher) {
+    init(inputCacher: InputFileCacher,
+         inputInMemoryCacher: InputInMemoryCacher) {
         self.inputCacher = inputCacher
+        self.inputInMemoryCacher = inputInMemoryCacher
     }
 
     func parseTargets(
         projectPath: String
     ) async throws -> [String: Node] {
         var projectPaths = [projectPath]
-        if let cache = try await inputCacher.read(basedOnPaths: projectPaths.pbxprojs()) {
-            return cache
+        if let inMemoryCache = try await inputInMemoryCacher.read(basedOnPaths: projectPaths.pbxprojs()) {
+            return inMemoryCache
         }
+        if let cache = try await inputCacher.read(basedOnPaths: projectPaths.pbxprojs()) { return cache }
 
         let xcodeproj = try XcodeProj(pathString: projectPath)
         let subprojectPaths = try subprojectPaths(xcodeproj, projectPath: projectPath)
         projectPaths.append(contentsOf: subprojectPaths)
+        if let inMemoryCache = try await inputInMemoryCacher.read(basedOnPaths: projectPaths.pbxprojs()) {
+            return inMemoryCache
+        }
         if let cache = try await inputCacher.read(basedOnPaths: projectPaths.pbxprojs()) {
             return cache
         }
@@ -29,6 +36,7 @@ final class XcodeProjectReader {
             try mergeTargets(&nodesMap, from: subproject)
         }
         try await inputCacher.keep(nodesMap, basedOnPaths: projectPaths.pbxprojs())
+        try await inputInMemoryCacher.keep(nodesMap, basedOnPaths: projectPaths.pbxprojs())
         return nodesMap
     }
 

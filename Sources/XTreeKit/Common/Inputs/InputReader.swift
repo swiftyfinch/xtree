@@ -40,34 +40,37 @@ final class InputReader {
 
     private let xcodeProjectReader: XcodeProjectReader
     private let yamlFileManager: YAMLFileManager
-
-    private var cache: (path: String, nodesMap: [String: Node])?
+    private let podfileLockReader: PodfileLockReader
+    private let inputInMemoryCacher: InputInMemoryCacher
 
     init(xcodeProjectReader: XcodeProjectReader,
-         yamlFileManager: YAMLFileManager) {
+         yamlFileManager: YAMLFileManager,
+         podfileLockReader: PodfileLockReader,
+         inputInMemoryCacher: InputInMemoryCacher) {
         self.xcodeProjectReader = xcodeProjectReader
         self.yamlFileManager = yamlFileManager
+        self.podfileLockReader = podfileLockReader
+        self.inputInMemoryCacher = inputInMemoryCacher
     }
 
     func read(inputPath: String) async throws -> [String: Node] {
-        let nodesMap: [String: Node]
         let resolvedPath = try resolvePath(inputPath)
-        if let cache, cache.path == resolvedPath {
-            return cache.nodesMap
-        }
-
         switch URL(fileURLWithPath: resolvedPath).pathExtension {
         case InputReaderExtensions.xcodeproj:
-            nodesMap = try await xcodeProjectReader.parseTargets(projectPath: resolvedPath)
+            return try await xcodeProjectReader.parseTargets(projectPath: resolvedPath)
         case InputReaderExtensions.yml, InputReaderExtensions.yaml:
-            nodesMap = try yamlFileManager.parse(path: resolvedPath)
+            return try await cached(
+                paths: [resolvedPath],
+                readNodesMap: try yamlFileManager.parse(path: resolvedPath)
+            )
         case InputReaderExtensions.lock:
-            nodesMap = try PodfileLockReader().parse(path: resolvedPath)
+            return try await cached(
+                paths: [resolvedPath],
+                readNodesMap: try podfileLockReader.parse(path: resolvedPath)
+            )
         default:
             throw Error.unknownInputExtension
         }
-        cache = (resolvedPath, nodesMap)
-        return nodesMap
     }
 
     private func resolvePath(_ path: String) throws -> String {
@@ -77,5 +80,15 @@ final class InputReader {
         if File.isExist(at: relativePath) || Folder.isExist(at: relativePath) { return relativePath }
 
         throw Error.inputIsNotExist
+    }
+
+    private func cached(
+        paths: [String],
+        readNodesMap: @autoclosure () throws -> [String: Node]
+    ) async throws -> [String: Node] {
+        if let cache = try await inputInMemoryCacher.read(basedOnPaths: paths) { return cache }
+        let nodesMap = try readNodesMap()
+        try await inputInMemoryCacher.keep(nodesMap, basedOnPaths: paths)
+        return nodesMap
     }
 }

@@ -1,7 +1,7 @@
 import Fish
 import Foundation
 
-final class InputCacher {
+final class InputFileCacher {
     private let sha1Hasher: SHA1Hasher
     private let yamlFileManager: YAMLFileManager
     private let cacheFolderPath: String
