@@ -61,12 +61,12 @@ final class InputReader {
         case InputReaderExtensions.yml, InputReaderExtensions.yaml:
             return try await cached(
                 paths: [resolvedPath],
-                readNodesMap: try yamlFileManager.parse(path: resolvedPath)
+                readNodesMap: yamlFileManager.parse(path: resolvedPath)
             )
         case InputReaderExtensions.lock:
             return try await cached(
                 paths: [resolvedPath],
-                readNodesMap: try podfileLockReader.parse(path: resolvedPath)
+                readNodesMap: podfileLockReader.parse(path: resolvedPath)
             )
         default:
             throw Error.unknownInputExtension
