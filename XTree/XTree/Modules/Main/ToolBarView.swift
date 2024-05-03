@@ -18,8 +18,11 @@ struct ToolBarView: View {
     var body: some View {
         Button(action: {
             if focusState != nil { restore = focusState }
-            state.isFiltersBlockShown.toggle()
-            if focusState == nil { focusState = restore ?? .roots }
+            withAnimation(.easeInOut(duration: 0.3), {
+                state.isFiltersBlockShown.toggle()
+            }, completion: {
+                if focusState == nil { focusState = restore ?? .roots }
+            })
         }, label: {
             Image(systemName: "magnifyingglass.circle.fill")
                 .imageScale(.large)

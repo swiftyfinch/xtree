@@ -15,6 +15,7 @@ struct MainView: View {
 
     var body: some View {
         VStack(spacing: 0) {
+            Color(.background).frame(height: 40).zIndex(2)
             if state.toolbar.isFiltersBlockShown {
                 FiltersView(
                     filtersState: $state.filters,
@@ -22,6 +23,7 @@ struct MainView: View {
                     onSubmit: update
                 )
                 .padding(.horizontal, 12)
+                .transition(.move(edge: .top).combined(with: .blurReplace))
             }
             ZStack {
                 Color.clear
@@ -36,6 +38,7 @@ struct MainView: View {
                 .opacity(!state.toolbar.isProcessing && (state.isInDropArea || state.tree == nil) ? 1 : 0)
             }
         }
+        .ignoresSafeArea()
         .toolbar {
             ToolBarView(
                 state: $state.toolbar,
