@@ -50,6 +50,5 @@ struct FiltersView: View {
             .onSubmit(onSubmit)
             .focused($focusState, equals: .filter)
         }
-        .padding(.horizontal, 4)
     }
 }

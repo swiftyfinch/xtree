@@ -10,7 +10,7 @@ struct FilterTextField: View {
     var body: some View {
         HStack(spacing: 5) {
             TextField(placeholder, text: $text)
-                .font(.system(size: 11))
+                .font(.subheadline)
                 .disableAutocorrection(true)
                 .textFieldStyle(PlainTextFieldStyle())
                 .focused($isFocused)
@@ -26,7 +26,8 @@ struct FilterTextField: View {
                 .buttonStyle(PlainButtonStyle())
             }
         }
-        .padding(.horizontal, 5)
+        .padding(.leading, 8)
+        .padding(.trailing, 4)
         .frame(height: 22)
         .background(Color(nsColor: isFocused ? .textBackgroundColor : .background))
         .cornerRadius(8)

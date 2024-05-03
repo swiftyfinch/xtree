@@ -21,6 +21,7 @@ struct MainView: View {
                     focusState: _focusState,
                     onSubmit: update
                 )
+                .padding(.horizontal, 12)
             }
             ZStack {
                 Color.clear
