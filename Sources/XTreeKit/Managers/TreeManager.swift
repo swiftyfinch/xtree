@@ -86,16 +86,17 @@ extension TreeManager: IInternalTreeManager {
                 maxHeight: filter.maxHeight
             )
         }
+        let children = filteredForest.recursiveChildren()
         return TreeNode(
             icon: nil,
             name: ".",
             info: nil,
             explicitChildren: filteredForest,
-            children: filteredForest.recursiveChildren(),
+            children: children,
             stats: TreeNode.Stats(
                 height: forest.maxHeight(),
-                explicitChildrenCount: forest.count,
-                childrenCount: forest.recursiveChildren().count
+                explicitChildrenCount: filteredForest.count,
+                childrenCount: children.count
             )
         )
     }

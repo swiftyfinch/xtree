@@ -20,13 +20,18 @@ final class TreeFilter {
                 maxHeight: maxHeight
             )
         }
+        let children = filteredExplicitChildren.recursiveChildren()
         return TreeNode(
             icon: tree.icon,
             name: tree.name,
             info: tree.info,
             explicitChildren: filteredExplicitChildren,
-            children: filteredExplicitChildren.recursiveChildren(),
-            stats: tree.stats
+            children: children,
+            stats: TreeNode.Stats(
+                height: tree.stats.height,
+                explicitChildrenCount: filteredExplicitChildren.count,
+                childrenCount: children.count
+            )
         )
     }
 }
