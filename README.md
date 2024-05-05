@@ -14,7 +14,7 @@
     <img src="https://img.shields.io/badge/Press_★_to_pay_respects-fff?logo=github&logoColor=black" />
   </p>
   
-  <img src="https://github.com/swiftyfinch/xtree/assets/64660122/8592bd64-20c8-4080-9d11-8d98c1ab16e7" width=700>
+  <img src="https://github.com/swiftyfinch/xtree/assets/64660122/9c4405b9-e03b-499c-8174-c94e2a5a4981" width=700>
   <img src="https://github.com/swiftyfinch/xtree/assets/64660122/54ecd0fa-72e0-4354-a479-bca24c6fed24" width=600>
 </div>
 
