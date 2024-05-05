@@ -5,10 +5,11 @@ struct TreeViewState {
     let root: String
     let adjacentList: [String: TreeNodeContent]
     let highlightText: String?
+    let icons: [TreeNodeContent.Icon]
 }
 
 struct TreeNodeContent {
-    struct Icon {
+    struct Icon: Equatable {
         let sfSymbol: String
         let primaryColor: UInt
         let secondaryColor: UInt?

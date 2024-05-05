@@ -6,6 +6,7 @@ struct ToolBarState {
     var sorting = "Name"
     var isCompressed = true
     var isProcessing = false
+    var icons: [IconState] = []
 }
 
 struct ToolBarView: View {
@@ -30,6 +31,8 @@ struct ToolBarView: View {
         })
         .keyboardShortcut(.init(.init("F"), modifiers: .command))
         .help(state.isFiltersBlockShown ? "Hide filters" : "Show filters")
+
+        IconsMenu(state: $state.icons)
 
         Picker("", selection: $state.sorting) {
             ForEach(state.sortingValues, id: \.self) { value in
@@ -70,5 +73,11 @@ struct ToolBarView: View {
         if state.isProcessing {
             ProgressView().controlSize(.mini).opacity(0.5).padding(.trailing, 4)
         }
+    }
+}
+
+extension [IconState] {
+    var hidden: Set<String> {
+        Set(filter(\.isHidden).map(\.icon.sfSymbol))
     }
 }

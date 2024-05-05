@@ -28,33 +28,50 @@ final class TreeBuilder: ObservableObject {
         sorting: String,
         isCompressed: Bool,
         filterText: String,
+        hiddenIcons: Set<String>,
         completion: @escaping (TreeViewState?) -> Void
     ) {
         guard let fileURL else { return completion(nil) }
         Task.detached {
             do {
-                let tree = try await self.treeManager.print(
-                    inputPath: fileURL.path,
-                    filter: .init(
-                        roots: roots,
-                        contains: contains,
-                        except: except,
-                        maxHeight: nil
-                    ),
-                    sort: Sort(rawValue: sorting.lowercased()) ?? .name,
-                    needsCompress: isCompressed
-                )
-                self.userDefaultsStorage.fileURL = fileURL
-                let adjacentList = self.treeViewModelBuilder.buildAdjacentList(
-                    root: tree,
+                var filter = TreeFilterOptions(roots: roots, contains: contains, except: except)
+                let sort = Sort(rawValue: sorting.lowercased()) ?? .name
+                let adjacentList = try await self.buildAdjacentList(
+                    path: fileURL.path,
+                    filter: filter,
+                    sort: sort,
+                    needsCompress: isCompressed,
                     filterText: filterText
                 )
+                self.userDefaultsStorage.fileURL = fileURL
+
+                let icons = self.icons(adjacentList: adjacentList)
+                let hiddenByIconTitles = adjacentList.filter {
+                    guard let icon = $0.value.icon else { return false }
+                    return hiddenIcons.contains(icon.sfSymbol)
+                }.map(\.value.title)
+
+                let filteredAdjacentList: [String: TreeNodeContent]
+                if hiddenByIconTitles.isEmpty {
+                    filteredAdjacentList = adjacentList
+                } else {
+                    filter.except += hiddenByIconTitles
+                    filteredAdjacentList = try await self.buildAdjacentList(
+                        path: fileURL.path,
+                        filter: filter,
+                        sort: sort,
+                        needsCompress: isCompressed,
+                        filterText: filterText
+                    )
+                }
+
                 Task { @MainActor in
                     completion(TreeViewState(
                         id: fileURL.path,
-                        root: tree.name,
-                        adjacentList: adjacentList,
-                        highlightText: filterText
+                        root: ".",
+                        adjacentList: filteredAdjacentList,
+                        highlightText: filterText,
+                        icons: icons
                     ))
                 }
             } catch {
@@ -63,5 +80,34 @@ final class TreeBuilder: ObservableObject {
                 }
             }
         }
+    }
+
+    private func buildAdjacentList(
+        path: String,
+        filter: TreeFilterOptions,
+        sort: Sort,
+        needsCompress: Bool,
+        filterText: String
+    ) async throws -> [String: TreeNodeContent] {
+        let tree = try await self.treeManager.print(
+            inputPath: path,
+            filter: filter,
+            sort: sort,
+            needsCompress: needsCompress
+        )
+        return self.treeViewModelBuilder.buildAdjacentList(
+            root: tree,
+            filterText: filterText
+        )
+    }
+
+    private func icons(adjacentList: [String: TreeNodeContent]) -> [TreeNodeContent.Icon] {
+        adjacentList.values
+            .reduce(into: [:]) { map, content in
+                guard let icon = content.icon else { return }
+                map[icon.sfSymbol] = icon
+            }
+            .values
+            .sorted { $0.sfSymbol < $1.sfSymbol }
     }
 }

@@ -1,6 +1,10 @@
 import AppKit
 
 extension NSColor {
+    convenience init(hex: UInt) {
+        self.init(hex: hex, alpha: 1)
+    }
+
     convenience init(hex: UInt, alpha: Double = 1) {
         self.init(
             srgbRed: Double((hex >> 16) & 0xFF) / 255,

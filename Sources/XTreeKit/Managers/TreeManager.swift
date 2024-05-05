@@ -3,10 +3,10 @@ import Fish
 // MARK: - Interface
 
 public struct TreeFilterOptions {
-    var roots: [String]
-    var contains: [String]
-    var except: [String]
-    var maxHeight: Int?
+    public var roots: [String]
+    public var contains: [String]
+    public var except: [String]
+    public var maxHeight: Int?
 
     public init(
         roots: [String],

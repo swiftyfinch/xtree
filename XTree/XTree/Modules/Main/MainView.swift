@@ -49,6 +49,7 @@ struct MainView: View {
         }
         .onChange(of: state.toolbar.sorting, update)
         .onChange(of: state.toolbar.isCompressed, update)
+        .onChange(of: state.toolbar.icons, update)
     }
 
     private func update() {
@@ -59,14 +60,26 @@ struct MainView: View {
             except: formatFilters(state.filters.except),
             sorting: state.toolbar.sorting,
             isCompressed: state.toolbar.isCompressed,
-            filterText: state.filters.filter
+            filterText: state.filters.filter,
+            hiddenIcons: state.toolbar.icons.hidden
         ) {
             state.tree = $0
+            state.toolbar.icons = convertIcons($0?.icons)
             state.toolbar.isProcessing = false
         }
     }
 
     private func formatFilters(_ filters: String) -> [String] {
         filters.components(separatedBy: ",").filter { !$0.isEmpty }
+    }
+
+    private func convertIcons(_ icons: [TreeNodeContent.Icon]?) -> [IconState] {
+        let hiddenIcons = state.toolbar.icons.hidden
+        return icons?.map { icon in
+            IconState(
+                icon: icon,
+                isHidden: hiddenIcons.contains(icon.sfSymbol)
+            )
+        } ?? []
     }
 }

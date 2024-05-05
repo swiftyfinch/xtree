@@ -19,6 +19,8 @@
 		238BE9CB2BCEE76F00DCFBEA /* NSColor+Hex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 238BE9CA2BCEE76F00DCFBEA /* NSColor+Hex.swift */; };
 		238BE9CF2BCEE7CE00DCFBEA /* TreeRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 238BE9CE2BCEE7CE00DCFBEA /* TreeRowView.swift */; };
 		238BE9D12BCEE84200DCFBEA /* TreeRowTitleFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 238BE9D02BCEE84200DCFBEA /* TreeRowTitleFormatter.swift */; };
+		238C22B42BE675BB004CE2E2 /* IconsMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 238C22B32BE675BB004CE2E2 /* IconsMenu.swift */; };
+		238C22B62BE6B998004CE2E2 /* Color+Hex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 238C22B52BE6B998004CE2E2 /* Color+Hex.swift */; };
 		238C80672BC9A7C600E515A8 /* XTreeApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 238C80662BC9A7C600E515A8 /* XTreeApp.swift */; };
 		238C806B2BC9A7C700E515A8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 238C806A2BC9A7C700E515A8 /* Assets.xcassets */; };
 		238C806E2BC9A7C700E515A8 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 238C806D2BC9A7C700E515A8 /* Preview Assets.xcassets */; };
@@ -43,6 +45,8 @@
 		238BE9CA2BCEE76F00DCFBEA /* NSColor+Hex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSColor+Hex.swift"; sourceTree = "<group>"; };
 		238BE9CE2BCEE7CE00DCFBEA /* TreeRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TreeRowView.swift; sourceTree = "<group>"; };
 		238BE9D02BCEE84200DCFBEA /* TreeRowTitleFormatter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TreeRowTitleFormatter.swift; sourceTree = "<group>"; };
+		238C22B32BE675BB004CE2E2 /* IconsMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconsMenu.swift; sourceTree = "<group>"; };
+		238C22B52BE6B998004CE2E2 /* Color+Hex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+Hex.swift"; sourceTree = "<group>"; };
 		238C80632BC9A7C600E515A8 /* XTree.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = XTree.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		238C80662BC9A7C600E515A8 /* XTreeApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XTreeApp.swift; sourceTree = "<group>"; };
 		238C806A2BC9A7C700E515A8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -73,8 +77,6 @@
 			children = (
 				2344E6F82BD4FEFB00E36A06 /* MainView.swift */,
 				238BE9BB2BCEE0D900DCFBEA /* DragAndDropView.swift */,
-				23F1D2FA2BD972E300C03134 /* FiltersView.swift */,
-				23F1D3042BD9840000C03134 /* ToolBarView.swift */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -126,6 +128,7 @@
 			isa = PBXGroup;
 			children = (
 				238BE9CA2BCEE76F00DCFBEA /* NSColor+Hex.swift */,
+				238C22B52BE6B998004CE2E2 /* Color+Hex.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -133,10 +136,21 @@
 		238BE9D22BCEE86E00DCFBEA /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				238C22B22BE675A8004CE2E2 /* ToolBar */,
 				2344E6F72BD4FEEE00E36A06 /* Main */,
 				238BE9C02BCEE1A400DCFBEA /* TreeView */,
 			);
 			path = Modules;
+			sourceTree = "<group>";
+		};
+		238C22B22BE675A8004CE2E2 /* ToolBar */ = {
+			isa = PBXGroup;
+			children = (
+				23F1D3042BD9840000C03134 /* ToolBarView.swift */,
+				238C22B32BE675BB004CE2E2 /* IconsMenu.swift */,
+				23F1D2FA2BD972E300C03134 /* FiltersView.swift */,
+			);
+			path = ToolBar;
 			sourceTree = "<group>";
 		};
 		238C805A2BC9A7C600E515A8 = {
@@ -273,6 +287,7 @@
 				23F1D2FF2BD97CB700C03134 /* TreeBuilder.swift in Sources */,
 				238BE9D12BCEE84200DCFBEA /* TreeRowTitleFormatter.swift in Sources */,
 				2344E6F92BD4FEFB00E36A06 /* MainView.swift in Sources */,
+				238C22B62BE6B998004CE2E2 /* Color+Hex.swift in Sources */,
 				238BE9A32BCC4C5D00DCFBEA /* DesignSystem.swift in Sources */,
 				238BE9BF2BCEE10000DCFBEA /* TreeViewModelBuilder.swift in Sources */,
 				238BE9C62BCEE27900DCFBEA /* TreeViewController.swift in Sources */,
@@ -284,6 +299,7 @@
 				23F1D3032BD980B000C03134 /* Vault.swift in Sources */,
 				238BE9A72BCC4F5700DCFBEA /* AppDelegate.swift in Sources */,
 				238C80672BC9A7C600E515A8 /* XTreeApp.swift in Sources */,
+				238C22B42BE675BB004CE2E2 /* IconsMenu.swift in Sources */,
 				23F1D2F42BD964D000C03134 /* SelectionTreeRowView.swift in Sources */,
 				238BE9CF2BCEE7CE00DCFBEA /* TreeRowView.swift in Sources */,
 			);
