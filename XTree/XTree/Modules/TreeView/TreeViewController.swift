@@ -128,8 +128,9 @@ extension TreeViewController: NSOutlineViewDataSource {
         numberOfChildrenOfItem item: Any?
     ) -> Int {
         if item == nil { return 1 }
-        guard let node = item as? TreeViewNode else { return 0 }
-        return adjacentList[node.title]?.children.count ?? 0
+        guard let node = item as? TreeViewNode,
+              let content = adjacentList[node.title] else { return 0 }
+        return content.children.count
     }
 
     func outlineView(
@@ -139,8 +140,9 @@ extension TreeViewController: NSOutlineViewDataSource {
     ) -> Any {
         if item == nil {
             return tree as Any
-        } else if let node = item as? TreeViewNode {
-            let name = adjacentList[node.title]!.children[index]
+        } else if let node = item as? TreeViewNode,
+                  let content = adjacentList[node.title] {
+            let name = content.children[index]
             let treeNode = buildNode(name: name, parent: node)
             return treeNode
         }
@@ -151,8 +153,9 @@ extension TreeViewController: NSOutlineViewDataSource {
         _: NSOutlineView,
         isItemExpandable item: Any
     ) -> Bool {
-        guard let node = item as? TreeViewNode else { return false }
-        return adjacentList[node.title]!.children.count > 0
+        guard let node = item as? TreeViewNode,
+              let content = adjacentList[node.title] else { return false }
+        return content.children.count > 0
     }
 }
 
