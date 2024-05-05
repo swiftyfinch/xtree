@@ -89,13 +89,13 @@ final class TreeBuilder: ObservableObject {
         needsCompress: Bool,
         filterText: String
     ) async throws -> [String: TreeNodeContent] {
-        let tree = try await self.treeManager.print(
+        let tree = try await treeManager.print(
             inputPath: path,
             filter: filter,
             sort: sort,
             needsCompress: needsCompress
         )
-        return self.treeViewModelBuilder.buildAdjacentList(
+        return treeViewModelBuilder.buildAdjacentList(
             root: tree,
             filterText: filterText
         )

@@ -41,6 +41,6 @@ struct IconsMenu: View {
 
 private extension ShapeStyle where Self == Color {
     static var hidden: Color {
-        Color(hex: 0x9da1a7).opacity(0.5)
+        Color(hex: 0x9DA1A7).opacity(0.5)
     }
 }
