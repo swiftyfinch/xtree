@@ -11,28 +11,55 @@ struct ToolBarState {
 
 struct ToolBarView: View {
     @Binding var state: ToolBarState
-    var onTrash: () -> Void
+    var onUpdate: () -> Void
 
     @FocusState var focusState: FocusField?
     @State private var restore: FocusField?
 
     var body: some View {
-        Button(action: {
-            if focusState != nil { restore = focusState }
-            withAnimation(.easeInOut(duration: 0.3), {
-                state.isFiltersBlockShown.toggle()
-            }, completion: {
-                if focusState == nil { focusState = restore ?? .roots }
+        HStack(spacing: 0) {
+            Button(action: {
+                if focusState != nil { restore = focusState }
+                withAnimation(.easeInOut(duration: 0.3), {
+                    state.isFiltersBlockShown.toggle()
+                }, completion: {
+                    if focusState == nil { focusState = restore ?? .roots }
+                })
+            }, label: {
+                Image(systemName: "magnifyingglass.circle.fill")
+                    .imageScale(.large)
+                    .offset(y: 1)
             })
-        }, label: {
-            Image(systemName: "magnifyingglass.circle.fill")
+            .keyboardShortcut(.init(.init("F"), modifiers: .command))
+            .help(state.isFiltersBlockShown ? "Hide filters" : "Show filters")
+
+            IconsMenu(state: $state.icons)
+                .help("Show or hide nodes by icon type")
+
+            Button(action: {
+                state.isCompressed.toggle()
+            }, label: {
+                Image(
+                    systemName: state.isCompressed
+                        ? "arrow.up.backward.and.arrow.down.forward.circle.fill"
+                        : "arrow.down.right.and.arrow.up.left.circle.fill"
+                )
+                .rotationEffect(.degrees(45))
                 .imageScale(.large)
                 .offset(y: 1)
-        })
-        .keyboardShortcut(.init(.init("F"), modifiers: .command))
-        .help(state.isFiltersBlockShown ? "Hide filters" : "Show filters")
+            })
+            .help(state.isCompressed ? "Show redundant explicit dependencies" : "Hide redundant explicit dependencies")
 
-        IconsMenu(state: $state.icons)
+            Button(action: {
+                state.isFiltersBlockShown = false
+                onUpdate()
+            }, label: {
+                Image(systemName: "arrow.triangle.2.circlepath.circle.fill")
+                    .imageScale(.large)
+                    .offset(y: 1)
+            })
+            .help("Read again the current tree input file")
+        }
 
         Picker("", selection: $state.sorting) {
             ForEach(state.sortingValues, id: \.self) { value in
@@ -43,30 +70,6 @@ struct ToolBarView: View {
             }
         }
         .help("Sorting by")
-
-        Button(action: {
-            state.isCompressed.toggle()
-        }, label: {
-            Image(
-                systemName: state.isCompressed
-                    ? "arrow.up.backward.and.arrow.down.forward.circle.fill"
-                    : "arrow.down.right.and.arrow.up.left.circle.fill"
-            )
-            .rotationEffect(.degrees(45))
-            .imageScale(.large)
-            .offset(y: 1)
-        })
-        .help(state.isCompressed ? "Show redundant explicit dependencies" : "Hide redundant explicit dependencies")
-
-        Button(action: {
-            state.isFiltersBlockShown = false
-            onTrash()
-        }, label: {
-            Image(systemName: "trash.circle.fill")
-                .imageScale(.large)
-                .offset(y: 1)
-        })
-        .help("Close the current tree input file")
 
         Spacer()
 

@@ -42,7 +42,7 @@ struct MainView: View {
         .toolbar {
             ToolBarView(
                 state: $state.toolbar,
-                onTrash: { state.tree = nil },
+                onUpdate: update,
                 focusState: _focusState
             )
             .disabled(state.tree == nil)
