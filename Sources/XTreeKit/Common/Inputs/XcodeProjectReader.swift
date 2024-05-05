@@ -70,6 +70,8 @@ final class XcodeProjectReader {
             return .init(sfSymbol: "checkmark.diamond.fill", primaryColor: 0xFFFFFF, secondaryColor: 0x57AB59)
         } else if pbxTarget.productType == .application {
             return .init(sfSymbol: "app.fill", primaryColor: 0xADBAC7, secondaryColor: nil)
+        } else if pbxTarget.productType == .staticLibrary {
+            return .init(sfSymbol: "building.columns.fill", primaryColor: 0xa2bdcc, secondaryColor: nil)
         }
         return nil
     }
