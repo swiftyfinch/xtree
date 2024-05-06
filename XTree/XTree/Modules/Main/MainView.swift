@@ -69,8 +69,8 @@ struct MainView: View {
         }
     }
 
-    private func formatFilters(_ filters: String) -> [String] {
-        filters.components(separatedBy: ",").filter { !$0.isEmpty }
+    private func formatFilters(_ filters: String) -> Set<String> {
+        Set(filters.components(separatedBy: ",").filter { !$0.isEmpty })
     }
 
     private func convertIcons(_ icons: [TreeNodeContent.Icon]?) -> [IconState] {

@@ -67,7 +67,7 @@ extension ImpactManager: IImpactManager {
         if affected.isEmpty { return nil }
 
         var filter = filter
-        filter.contains.append(contentsOf: affected)
+        filter.contains.formUnion(affected)
         return try treeManager.print(nodesMap: nodesMap, filter: filter, sort: sort, needsCompress: false)
     }
 }

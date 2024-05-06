@@ -22,9 +22,9 @@ final class TreeBuilder: ObservableObject {
     }
 
     func build(
-        roots: [String],
-        contains: [String],
-        except: [String],
+        roots: Set<String>,
+        contains: Set<String>,
+        except: Set<String>,
         sorting: String,
         isCompressed: Bool,
         filterText: String,

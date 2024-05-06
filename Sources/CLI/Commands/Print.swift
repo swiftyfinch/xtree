@@ -31,9 +31,9 @@ extension XTree.Print {
         let tree = try await treeManager.print(
             inputPath: inputPath,
             filter: .init(
-                roots: treeOptions.roots,
-                contains: treeOptions.contains,
-                except: treeOptions.except,
+                roots: Set(treeOptions.roots),
+                contains: Set(treeOptions.contains),
+                except: Set(treeOptions.except),
                 exceptIcons: [],
                 maxHeight: treeOptions.maxHeight
             ),
