@@ -15,7 +15,6 @@
   </p>
   
   <img src="https://github.com/swiftyfinch/xtree/assets/64660122/9c4405b9-e03b-499c-8174-c94e2a5a4981" width=700>
-  <img src="https://github.com/swiftyfinch/xtree/assets/64660122/54ecd0fa-72e0-4354-a479-bca24c6fed24" width=600>
 </div>
 
 # Motivation
@@ -28,6 +27,8 @@ And I am sharing it with you right here.
 <br>
 
 # How to use 🌳
+
+🎬 Demonstrations: https://github.com/swiftyfinch/xtree/discussions/4
 
 Right now, it supports the following inputs:
 - Standard Xcode project: `*.xcodeproj`
