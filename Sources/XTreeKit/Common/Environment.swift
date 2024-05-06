@@ -1,7 +1,7 @@
 import Fish
 
 public enum Environment {
-    public static let version = "2.1.0"
+    public static let version = "2.1.1"
 
     static let cacheFolderPath = Folder.home.subpath(".xtree/cache")
     static let maxCacheStorageCount = 20
