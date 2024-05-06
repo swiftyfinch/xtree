@@ -34,7 +34,7 @@ final class TreeBuilder: ObservableObject {
         guard let fileURL else { return completion(nil) }
         Task.detached {
             do {
-                var filter = TreeFilterOptions(roots: roots, contains: contains, except: except)
+                var filter = TreeFilterOptions(roots: roots, contains: contains, except: except, exceptIcons: [])
                 let sort = Sort(rawValue: sorting.lowercased()) ?? .name
                 let adjacentList = try await self.buildAdjacentList(
                     path: fileURL.path,
@@ -46,16 +46,11 @@ final class TreeBuilder: ObservableObject {
                 self.userDefaultsStorage.fileURL = fileURL
 
                 let icons = self.icons(adjacentList: adjacentList)
-                let hiddenByIconTitles = adjacentList.filter {
-                    guard let icon = $0.value.icon else { return false }
-                    return hiddenIcons.contains(icon.sfSymbol)
-                }.map(\.value.title)
-
                 let filteredAdjacentList: [String: TreeNodeContent]
-                if hiddenByIconTitles.isEmpty {
+                if hiddenIcons.isEmpty {
                     filteredAdjacentList = adjacentList
                 } else {
-                    filter.except += hiddenByIconTitles
+                    filter.exceptIcons.formUnion(hiddenIcons)
                     filteredAdjacentList = try await self.buildAdjacentList(
                         path: fileURL.path,
                         filter: filter,

@@ -44,6 +44,7 @@ extension XTree.Impact {
                 roots: treeOptions.roots,
                 contains: treeOptions.contains,
                 except: treeOptions.except,
+                exceptIcons: [],
                 maxHeight: treeOptions.maxHeight
             ),
             sort: treeOptions.sort

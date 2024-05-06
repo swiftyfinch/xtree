@@ -6,17 +6,20 @@ public struct TreeFilterOptions {
     public var roots: [String]
     public var contains: [String]
     public var except: [String]
+    public var exceptIcons: Set<String>
     public var maxHeight: Int?
 
     public init(
         roots: [String],
         contains: [String],
         except: [String],
+        exceptIcons: Set<String>,
         maxHeight: Int? = nil
     ) {
         self.roots = roots
         self.contains = contains
         self.except = except
+        self.exceptIcons = exceptIcons
         self.maxHeight = maxHeight
     }
 }
@@ -83,6 +86,7 @@ extension TreeManager: IInternalTreeManager {
                 tree,
                 contains: filter.contains.map(regexBuilder.build(wildcardsPattern:)),
                 except: filter.except.map(regexBuilder.build(wildcardsPattern:)),
+                exceptIcons: filter.exceptIcons,
                 maxHeight: filter.maxHeight
             )
         }
