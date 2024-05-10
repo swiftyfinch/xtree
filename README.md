@@ -5,7 +5,7 @@
     <source media="(prefers-color-scheme: light)" srcset="https://github.com/swiftyfinch/xtree/assets/64660122/972080ab-e35d-47d9-816d-264aff4770dd" width=200>
     <img src="https://user-images.githubusercontent.com/25423296/163456779-a8556205-d0a5-45e2-ac17-42d089e3c3f8.png">
   </picture>
-  <p><code>Printing and analyzing trees in a handy way</code></p>
+  <p>Printing and analyzing trees in a handy way</p>
   <p align="center">
     <a href="https://swiftpackageindex.com/swiftyfinch/xtree"><img src="https://img.shields.io/endpoint?url=https%3A%2F%2Fswiftpackageindex.com%2Fapi%2Fpackages%2Fswiftyfinch%2Fxtree%2Fbadge%3Ftype%3Dplatforms" /></a>
     <a href="https://swiftpackageindex.com/swiftyfinch/xtree"><img src="https://img.shields.io/endpoint?url=https%3A%2F%2Fswiftpackageindex.com%2Fapi%2Fpackages%2Fswiftyfinch%2Fxtree%2Fbadge%3Ftype%3Dswift-versions" /></a>
@@ -17,25 +17,21 @@
   <img src="https://github.com/swiftyfinch/xtree/assets/64660122/9c4405b9-e03b-499c-8174-c94e2a5a4981" width=700>
 </div>
 
-# Motivation
-
-Sometimes, we need to analyze different tree structures for research purposes.\
-Usually, I would write some simple scripts to accomplish these goals.\
-However, after thinking about it, I decided to create a small utility with a set of useful commands.\
-And I am sharing it with you right here.
-
 <br>
 
 # How to use 🌳
 
 🎬 Demonstrations: https://github.com/swiftyfinch/xtree/discussions/4
 
-Right now, it supports the following inputs:
+## Inputs
+
 - Standard Xcode project: `*.xcodeproj`
 - [CocoaPods](https://cocoapods.org): `Podfile.lock`
 - YAML file with [a specific format](docs/inputs/yaml.md): `*.yml`/`*.yaml`
+- Feel free to suggest other common input files
 
-###### 📖 Commands Help
+## Commands Help (Terminal CLI)
+
 ```sh
 > xtree --help
 
