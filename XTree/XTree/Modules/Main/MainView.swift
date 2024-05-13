@@ -9,9 +9,14 @@ class MainState: ObservableObject {
     
     private var bag = Set<AnyCancellable>()
     
-    func onToolbarChange(_ onChange: @escaping () -> Void) {
+    func onToolbarChange(_ onChange: @escaping (@escaping () -> Void) -> Void) {
         guard bag.isEmpty else { return }
-        $toolbar.sink(receiveValue: { _ in onChange() }).store(in: &bag)
+        var ignoresChanges = false
+        $toolbar.sink(receiveValue: { value in
+            guard !ignoresChanges else { return }
+            ignoresChanges = true
+            onChange { ignoresChanges = false }
+        }).store(in: &bag)
     }
 }
 
@@ -62,11 +67,18 @@ struct MainView: View {
             .disabled(state.tree == nil)
         }
         .onAppear(perform: {
-            state.onToolbarChange(update)
+            state.onToolbarChange { completion in
+                self.update(completion: completion)
+            }
         })
     }
-
+    
     private func update() {
+        self.update(completion: nil)
+    }
+
+    private func update(completion: (() -> Void)?) {
+        guard treeBuilder.hasFileURL() else { return }
         state.toolbar.isProcessing = true
         treeBuilder.build(
             roots: formatFilters(state.filters.roots),
@@ -80,6 +92,7 @@ struct MainView: View {
             state.tree = $0
             state.toolbar.icons = convertIcons($0?.icons)
             state.toolbar.isProcessing = false
+            completion?()
         }
     }
 

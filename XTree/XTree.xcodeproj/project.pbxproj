@@ -30,6 +30,7 @@
 		23F1D3012BD97F0B00C03134 /* UserDefaultsStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23F1D3002BD97F0B00C03134 /* UserDefaultsStorage.swift */; };
 		23F1D3032BD980B000C03134 /* Vault.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23F1D3022BD980B000C03134 /* Vault.swift */; };
 		23F1D3052BD9840000C03134 /* ToolBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23F1D3042BD9840000C03134 /* ToolBarView.swift */; };
+		2CDCE7A02BF2981900770AB2 /* InsettableShape+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CDCE79F2BF2981900770AB2 /* InsettableShape+Ext.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -58,6 +59,7 @@
 		23F1D3002BD97F0B00C03134 /* UserDefaultsStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsStorage.swift; sourceTree = "<group>"; };
 		23F1D3022BD980B000C03134 /* Vault.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Vault.swift; sourceTree = "<group>"; };
 		23F1D3042BD9840000C03134 /* ToolBarView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ToolBarView.swift; sourceTree = "<group>"; };
+		2CDCE79F2BF2981900770AB2 /* InsettableShape+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "InsettableShape+Ext.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -173,6 +175,7 @@
 		238C80652BC9A7C600E515A8 /* XTree */ = {
 			isa = PBXGroup;
 			children = (
+				2CDCE79E2BF2980100770AB2 /* Extensions */,
 				238BE9D22BCEE86E00DCFBEA /* Modules */,
 				238BE9A62BCC4EFC00DCFBEA /* App */,
 				238BE9A12BCC4C3F00DCFBEA /* Common */,
@@ -205,6 +208,14 @@
 				23F1D3002BD97F0B00C03134 /* UserDefaultsStorage.swift */,
 			);
 			path = Services;
+			sourceTree = "<group>";
+		};
+		2CDCE79E2BF2980100770AB2 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				2CDCE79F2BF2981900770AB2 /* InsettableShape+Ext.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -300,6 +311,7 @@
 				238BE9A72BCC4F5700DCFBEA /* AppDelegate.swift in Sources */,
 				238C80672BC9A7C600E515A8 /* XTreeApp.swift in Sources */,
 				238C22B42BE675BB004CE2E2 /* IconsMenu.swift in Sources */,
+				2CDCE7A02BF2981900770AB2 /* InsettableShape+Ext.swift in Sources */,
 				23F1D2F42BD964D000C03134 /* SelectionTreeRowView.swift in Sources */,
 				238BE9CF2BCEE7CE00DCFBEA /* TreeRowView.swift in Sources */,
 			);
