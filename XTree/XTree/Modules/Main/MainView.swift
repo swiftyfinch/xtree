@@ -1,16 +1,23 @@
 import SwiftUI
+import Combine
 
-struct MainState {
-    var filters = FiltersViewState()
-    var toolbar = ToolBarState()
-    var isInDropArea = false
-    var tree: TreeViewState?
+class MainState: ObservableObject {
+    @Published var filters = FiltersViewState()
+    @Published var toolbar = ToolBarState()
+    @Published var isInDropArea = false
+    @Published var tree: TreeViewState?
+    
+    private var bag = Set<AnyCancellable>()
+    
+    func onToolbarChange(_ onChange: @escaping () -> Void) {
+        guard bag.isEmpty else { return }
+        $toolbar.sink(receiveValue: { _ in onChange() }).store(in: &bag)
+    }
 }
 
 struct MainView: View {
     @EnvironmentObject var treeBuilder: TreeBuilder
-
-    @State private var state = MainState()
+    @ObservedObject private var state: MainState = MainState()
     @FocusState var focusState: FocusField?
 
     var body: some View {
@@ -54,9 +61,9 @@ struct MainView: View {
             )
             .disabled(state.tree == nil)
         }
-        .onChange(of: state.toolbar.sorting, update)
-        .onChange(of: state.toolbar.isCompressed, update)
-        .onChange(of: state.toolbar.icons, update)
+        .onAppear(perform: {
+            state.onToolbarChange(update)
+        })
     }
 
     private func update() {
