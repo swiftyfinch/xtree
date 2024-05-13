@@ -41,10 +41,8 @@ struct MainView: View {
                     filtersView.transition(.move(edge: .top).combined(with: .blurReplace))
                 } else {
                     // no transition
+                    filtersView
                 }
-
-                // returns view
-                filtersView
             }
             ZStack {
                 Color.clear
