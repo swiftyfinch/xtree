@@ -30,6 +30,7 @@
 		23F1D3012BD97F0B00C03134 /* UserDefaultsStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23F1D3002BD97F0B00C03134 /* UserDefaultsStorage.swift */; };
 		23F1D3032BD980B000C03134 /* Vault.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23F1D3022BD980B000C03134 /* Vault.swift */; };
 		23F1D3052BD9840000C03134 /* ToolBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23F1D3042BD9840000C03134 /* ToolBarView.swift */; };
+		2CDCE7A22BF2B59600770AB2 /* MainState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CDCE7A12BF2B59600770AB2 /* MainState.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -58,6 +59,7 @@
 		23F1D3002BD97F0B00C03134 /* UserDefaultsStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsStorage.swift; sourceTree = "<group>"; };
 		23F1D3022BD980B000C03134 /* Vault.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Vault.swift; sourceTree = "<group>"; };
 		23F1D3042BD9840000C03134 /* ToolBarView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ToolBarView.swift; sourceTree = "<group>"; };
+		2CDCE7A12BF2B59600770AB2 /* MainState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainState.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -77,6 +79,7 @@
 			children = (
 				2344E6F82BD4FEFB00E36A06 /* MainView.swift */,
 				238BE9BB2BCEE0D900DCFBEA /* DragAndDropView.swift */,
+				2CDCE7A12BF2B59600770AB2 /* MainState.swift */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -282,6 +285,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2CDCE7A22BF2B59600770AB2 /* MainState.swift in Sources */,
 				23F1D3052BD9840000C03134 /* ToolBarView.swift in Sources */,
 				23F1D2FB2BD972E300C03134 /* FiltersView.swift in Sources */,
 				23F1D2FF2BD97CB700C03134 /* TreeBuilder.swift in Sources */,
@@ -361,7 +365,7 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
-				MACOSX_DEPLOYMENT_TARGET = 14.0;
+				MACOSX_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -418,7 +422,7 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
-				MACOSX_DEPLOYMENT_TARGET = 14.0;
+				MACOSX_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = macosx;

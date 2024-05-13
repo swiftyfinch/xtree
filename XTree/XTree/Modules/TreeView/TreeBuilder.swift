@@ -21,6 +21,8 @@ final class TreeBuilder: ObservableObject {
         self.fileURL = fileURL
     }
 
+    func hasFileURL() -> Bool { fileURL != nil }
+
     func build(
         roots: Set<String>,
         contains: Set<String>,
