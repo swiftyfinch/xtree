@@ -17,13 +17,20 @@ struct MainView: View {
         VStack(spacing: 0) {
             Color(.background).frame(height: 40).zIndex(2)
             if state.toolbar.isFiltersBlockShown {
-                FiltersView(
+                let filtersView = FiltersView(
                     filtersState: $state.filters,
                     focusState: _focusState,
                     onSubmit: update
-                )
-                .padding(.horizontal, 12)
-                .transition(.move(edge: .top).combined(with: .blurReplace))
+                ).padding(.horizontal, 12)
+                
+                if #available(macOS 14.0, *) {
+                    filtersView.transition(.move(edge: .top).combined(with: .blurReplace))
+                } else {
+                    // no transition
+                }
+                
+                // returns view
+                filtersView
             }
             ZStack {
                 Color.clear
