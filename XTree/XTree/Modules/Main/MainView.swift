@@ -1,18 +1,18 @@
-import SwiftUI
 import Combine
+import SwiftUI
 
 class MainState: ObservableObject {
     @Published var filters = FiltersViewState()
     @Published var toolbar = ToolBarState()
     @Published var isInDropArea = false
     @Published var tree: TreeViewState?
-    
+
     private var ignoresChanges = false
     private var bag = Set<AnyCancellable>()
-    
+
     func onToolbarChange(_ onChange: @escaping (@escaping () -> Void) -> Void) {
         guard bag.isEmpty else { return }
-        $toolbar.sink(receiveValue: { [weak self] value in
+        $toolbar.sink(receiveValue: { [weak self] _ in
             guard let self = self, !ignoresChanges else { return }
             self.ignoresChanges = true
             onChange {
@@ -36,13 +36,13 @@ struct MainView: View {
                     focusState: _focusState,
                     onSubmit: update
                 ).padding(.horizontal, 12)
-                
+
                 if #available(macOS 14.0, *) {
                     filtersView.transition(.move(edge: .top).combined(with: .blurReplace))
                 } else {
                     // no transition
                 }
-                
+
                 // returns view
                 filtersView
             }
@@ -69,15 +69,15 @@ struct MainView: View {
             .disabled(state.tree == nil)
         }
     }
-    
+
     private func update() {
-        self.update(completion: nil)
+        update(completion: nil)
     }
 
     private func update(completion: (() -> Void)?) {
         guard treeBuilder.hasFileURL() else { return }
         state.onToolbarChange(update(completion:))
-        
+
         state.toolbar.isProcessing = true
         treeBuilder.build(
             roots: formatFilters(state.filters.roots),

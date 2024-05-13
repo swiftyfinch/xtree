@@ -28,7 +28,7 @@ struct ToolBarView: View {
                 let completionBlock: () -> Void = {
                     if focusState == nil { focusState = restore ?? .roots }
                 }
-                
+
                 if #available(macOS 14.0, *) {
                     withAnimation(animation, animationBlock, completion: completionBlock)
                 } else {

@@ -20,7 +20,7 @@ final class TreeBuilder: ObservableObject {
     func saveFileURL(_ fileURL: URL) {
         self.fileURL = fileURL
     }
-    
+
     func hasFileURL() -> Bool { fileURL != nil }
 
     func build(
