@@ -20,22 +20,14 @@ struct ToolBarView: View {
         HStack(spacing: 0) {
             Button(action: {
                 if focusState != nil { restore = focusState }
-                let animationDuration: TimeInterval = 0.3
-                let animation: Animation = .easeInOut(duration: animationDuration)
-                let animationBlock: () -> Void = {
-                    state.isFiltersBlockShown.toggle()
-                }
-                let completionBlock: () -> Void = {
-                    if focusState == nil { focusState = restore ?? .roots }
-                }
-
                 if #available(macOS 14.0, *) {
-                    withAnimation(animation, animationBlock, completion: completionBlock)
+                    withAnimation(.easeInOut(duration: 0.3), {
+                        state.isFiltersBlockShown.toggle()
+                    }, completion: {
+                        if focusState == nil { focusState = restore ?? .roots }
+                    })
                 } else {
-                    withAnimation(animation) {
-                        animationBlock()
-                        DispatchQueue.main.asyncAfter(deadline: .now() + animationDuration, execute: completionBlock)
-                    }
+                   // no animation
                 }
             }, label: {
                 Image(systemName: "magnifyingglass.circle.fill")
