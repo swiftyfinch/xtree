@@ -75,6 +75,9 @@ xtree update
 ## Application (macOS)
 
 Use [Homebrew](https://brew.sh) and commands provided below:
+**Requirements**: Mac OS 13.0 (Ventura) and above.
+
+- Use [Homebrew](https://brew.sh) and commands provided below:
 ```sh
 brew tap swiftyfinch/xtree https://github.com/swiftyfinch/xtree.git
 brew install --cask xtree --no-quarantine
