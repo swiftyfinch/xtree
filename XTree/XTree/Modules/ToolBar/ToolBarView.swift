@@ -27,7 +27,7 @@ struct ToolBarView: View {
                         if focusState == nil { focusState = restore ?? .roots }
                     })
                 } else {
-                   // no animation
+                    // no animation
                 }
             }, label: {
                 Image(systemName: "magnifyingglass.circle.fill")
