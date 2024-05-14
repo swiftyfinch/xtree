@@ -13,7 +13,7 @@ struct DragAndDropView: View {
             if isInDropArea {
                 Color.clear.overlay(
                     RoundedRectangle(cornerRadius: 8)
-                        .customStrokeBorderAndFill()
+                        .strokeBorder(HierarchicalShapeStyle.tertiary, style: StrokeStyle(dash: [4]))
                         .padding(10)
                         .opacity(isInDropArea ? 1 : 0)
                 )
@@ -70,17 +70,5 @@ private extension String {
 private extension URL {
     func suffixPath(upTo components: Int = 4) -> String {
         pathComponents.suffix(components).joined(separator: "/")
-    }
-}
-
-public extension InsettableShape {
-    /// Applies back deployed modifers for stroking border
-    @inlinable func customStrokeBorderAndFill() -> some View {
-        if #available(macOS 14.0, *) {
-            return self.strokeBorder(HierarchicalShapeStyle.tertiary, style: StrokeStyle(dash: [4])).fill(Color.white.opacity(0.03))
-        } else {
-            // Fill modifier is not available for type: any View
-            return strokeBorder(HierarchicalShapeStyle.tertiary, style: StrokeStyle(dash: [4]))
-        }
     }
 }
