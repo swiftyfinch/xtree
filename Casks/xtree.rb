@@ -1,7 +1,7 @@
 cask 'xtree' do
-  version "2.1.1"
+  version "2.2.0"
   url "https://github.com/swiftyfinch/xtree/releases/download/#{version}/XTree.zip"
-  sha256 '054dd4366a4513d4c6ab73afc417d4b28433975d9a832160f7fc383b4c734411'
+  sha256 'c2817f523ae758f9f7e56855c52efc51f4aa84fbd3eebbba991e83ff2a1c8213'
 
   app "XTree.app"
 end
