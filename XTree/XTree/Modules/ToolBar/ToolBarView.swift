@@ -20,15 +20,16 @@ struct ToolBarView: View {
         HStack(spacing: 0) {
             Button(action: {
                 if focusState != nil { restore = focusState }
-                if #available(macOS 14.0, *) {
-                    withAnimation(.easeInOut(duration: 0.3), {
+                withAnimation(
+                    .easeInOut(duration: 0.3),
+                    duration: 0.3,
+                    body: {
                         state.isFiltersBlockShown.toggle()
-                    }, completion: {
+                    },
+                    completion: {
                         if focusState == nil { focusState = restore ?? .roots }
-                    })
-                } else {
-                    // no animation
-                }
+                    }
+                )
             }, label: {
                 Image(systemName: "magnifyingglass.circle.fill")
                     .imageScale(.large)
@@ -86,5 +87,27 @@ struct ToolBarView: View {
 extension [IconState] {
     var hidden: Set<String> {
         Set(filter(\.isHidden).map(\.icon.sfSymbol))
+    }
+}
+
+// Backward compatibility for macOS 13
+private func withAnimation(
+    _ animation: Animation?,
+    duration: TimeInterval,
+    body: () throws -> Void,
+    completion: @escaping () -> Void
+) rethrows {
+    if #available(macOS 14.0, *) {
+        try withAnimation(
+            animation,
+            completionCriteria: .logicallyComplete,
+            body,
+            completion: completion
+        )
+    } else {
+        try withAnimation(animation, body)
+        DispatchQueue.main.asyncAfter(deadline: .now() + duration) {
+            completion()
+        }
     }
 }

@@ -1,26 +1,29 @@
 import SwiftUI
 
+struct MainState {
+    var filters = FiltersViewState()
+    var toolbar = ToolBarState()
+    var isInDropArea = false
+    var tree: TreeViewState?
+}
+
 struct MainView: View {
     @EnvironmentObject var treeBuilder: TreeBuilder
-    @ObservedObject private var state: MainState = MainState()
+
+    @State private var state = MainState()
     @FocusState var focusState: FocusField?
 
     var body: some View {
         VStack(spacing: 0) {
             Color(.background).frame(height: 40).zIndex(2)
             if state.toolbar.isFiltersBlockShown {
-                let filtersView = FiltersView(
+                FiltersView(
                     filtersState: $state.filters,
                     focusState: _focusState,
                     onSubmit: update
-                ).padding(.horizontal, 12)
-
-                if #available(macOS 14.0, *) {
-                    filtersView.transition(.move(edge: .top).combined(with: .blurReplace))
-                } else {
-                    // no transition
-                    filtersView
-                }
+                )
+                .padding(.horizontal, 12)
+                .transition(.move(edge: .top).combined(with: .opacity))
             }
             ZStack {
                 Color.clear
@@ -44,16 +47,12 @@ struct MainView: View {
             )
             .disabled(state.tree == nil)
         }
+        .onChange(of: state.toolbar.sorting, perform: { _ in update() })
+        .onChange(of: state.toolbar.isCompressed, perform: { _ in update() })
+        .onChange(of: state.toolbar.icons, perform: { _ in update() })
     }
 
     private func update() {
-        update(completion: nil)
-    }
-
-    private func update(completion: (() -> Void)?) {
-        guard treeBuilder.hasFileURL() else { return }
-        state.onToolbarChange(update(completion:))
-
         state.toolbar.isProcessing = true
         treeBuilder.build(
             roots: formatFilters(state.filters.roots),
@@ -67,7 +66,6 @@ struct MainView: View {
             state.tree = $0
             state.toolbar.icons = convertIcons($0?.icons)
             state.toolbar.isProcessing = false
-            completion?()
         }
     }
 

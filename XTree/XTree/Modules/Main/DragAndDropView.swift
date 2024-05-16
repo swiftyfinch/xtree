@@ -13,7 +13,8 @@ struct DragAndDropView: View {
             if isInDropArea {
                 Color.clear.overlay(
                     RoundedRectangle(cornerRadius: 8)
-                        .strokeBorder(HierarchicalShapeStyle.tertiary, style: StrokeStyle(dash: [4]))
+                        .strokeBorder(.tertiary, style: StrokeStyle(dash: [4]))
+                        .background(Color.white.opacity(0.03))
                         .padding(10)
                         .opacity(isInDropArea ? 1 : 0)
                 )
