@@ -52,7 +52,7 @@ jobs:
           -derivedDataPath build \
           -clonedSourcePackagesDirPath "$HOME/Library/Developer/Xcode/DerivedData/XTree" \
           | xcbeautify
-    - uses: actions/upload-artifact@v3
+    - uses: actions/upload-artifact@v4
       with:
         name: XTree
         path: build/Build/Products/Release/XTree.app
