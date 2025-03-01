@@ -12,6 +12,7 @@
     <img src="https://komarev.com/ghpvc/?username=swiftyfinch-xtree&label=Views&format=true&base=0" />
     <br />
     <img src="https://img.shields.io/badge/Press_★_to_pay_respects-fff?logo=github&logoColor=black" />
+    <a href="https://tooomm.github.io/github-release-stats/?username=swiftyfinch&repository=xtree"><img src="https://img.shields.io/github/downloads/swiftyfinch/xtree/total?label=Downloads&logo=github"></a>
   </p>
   
   <img src="https://github.com/swiftyfinch/xtree/assets/64660122/9c4405b9-e03b-499c-8174-c94e2a5a4981" width=700>
