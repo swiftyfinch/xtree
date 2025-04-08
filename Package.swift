@@ -12,7 +12,7 @@ let package = Package(
     dependencies: [
         .package(url: "https://github.com/apple/swift-argument-parser", from: "1.3.1"),
         .package(url: "https://github.com/onevcat/Rainbow", from: "4.0.1"),
-        .package(url: "https://github.com/tuist/XcodeProj", from: "8.20.0"),
+        .package(url: "https://github.com/tuist/XcodeProj", from: "9.0.2"),
         .package(url: "https://github.com/swiftyfinch/Fish", from: "0.1.2"),
         .package(url: "https://github.com/jpsim/Yams", from: "5.1.0"),
         .package(url: "https://github.com/weichsel/ZIPFoundation", from: "0.9.19")
