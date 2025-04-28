@@ -21,7 +21,7 @@ final class XcodeProjectReader {
         if let cache = try await inputCacher.read(basedOnPaths: projectPaths.pbxprojs()) { return cache }
 
         let xcodeproj = try XcodeProj(pathString: projectPath)
-        let subprojectPaths = try subprojectPaths(xcodeproj, projectPath: projectPath)
+        let subprojectPaths = subprojectPaths(xcodeproj, projectPath: projectPath)
         projectPaths.append(contentsOf: subprojectPaths)
         if let inMemoryCache = try await inputInMemoryCacher.read(basedOnPaths: projectPaths.pbxprojs()) {
             return inMemoryCache
@@ -52,11 +52,14 @@ final class XcodeProjectReader {
         }
     }
 
-    private func subprojectPaths(_ xcodeproj: XcodeProj, projectPath: String) throws -> [String] {
-        let projectFolderPath = URL(fileURLWithPath: projectPath).deletingLastPathComponent().path
-        return try xcodeproj.pbxproj.fileReferences
+    private func subprojectPaths(_ xcodeproj: XcodeProj, projectPath: String) -> [String] {
+        let projectFolderPath = URL(fileURLWithPath: projectPath).deletingLastPathComponent()
+        return xcodeproj.pbxproj.fileReferences
             .filter { $0.path?.hasSuffix(.xcodeprojExtension) == true }
-            .compactMap { try $0.fullPath(sourceRoot: projectFolderPath) }
+            .compactMap {
+                guard let subprojectPath = $0.path else { return nil }
+                return projectFolderPath.appendingPathComponent(subprojectPath).standardized.path
+            }
     }
 
     private func makeIcon(pbxTarget: PBXTarget) -> Node.Icon? {
