@@ -14,7 +14,7 @@ let package = Package(
         .package(url: "https://github.com/onevcat/Rainbow", from: "4.0.1"),
         .package(url: "https://github.com/tuist/XcodeProj", from: "9.1.0"),
         .package(url: "https://github.com/swiftyfinch/Fish", from: "0.1.2"),
-        .package(url: "https://github.com/jpsim/Yams", from: "5.1.0"),
+        .package(url: "https://github.com/jpsim/Yams", from: "6.0.0"),
         .package(url: "https://github.com/weichsel/ZIPFoundation", from: "0.9.19")
     ],
     targets: [
